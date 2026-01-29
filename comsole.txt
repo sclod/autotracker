@@ -1,0 +1,268 @@
+PS C:\Users\gagab\Desktop\autotracker> npm run dev
+
+> autotracker@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.56.1:3000
+- Environments: .env
+
+✓ Starting...
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+✓ Ready in 1070ms
+ GET / 200 in 1214ms (compile: 692ms, render: 522ms)
+ GET /track 200 in 52ms (compile: 28ms, render: 25ms)
+ GET / 200 in 68ms (compile: 3ms, render: 65ms)
+✓ Compiled in 81ms
+✓ Compiled in 141ms
+✓ Compiled in 101ms
+✓ Compiled in 135ms
+✓ Compiled in 81ms
+ GET / 200 in 220ms (compile: 7ms, render: 213ms)
+ GET /admin/login 200 in 189ms (compile: 47ms, proxy.ts: 63ms, render: 79ms)
+ POST /api/admin/login 307 in 78ms (compile: 63ms, render: 15ms)
+ POST /admin/login?error=1 200 in 59ms (compile: 6ms, proxy.ts: 5ms, render: 49ms)
+  Reload env: .env
+⚠ Fast Refresh had to perform a full reload when ./node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+✓ Compiled in 40ms
+ GET / 200 in 628ms (compile: 164ms, render: 464ms)
+ GET / 200 in 127ms (compile: 9ms, render: 119ms)
+ GET /admin/login?error=1 200 in 654ms (compile: 57ms, proxy.ts: 17ms, render: 580ms)
+ GET /admin/login?error=1 200 in 384ms (compile: 322ms, proxy.ts: 17ms, render: 45ms)
+ GET / 200 in 398ms (compile: 6ms, render: 392ms)
+  Reload env: .env
+✓ Compiled in 25ms
+⚠ Fast Refresh had to perform a full reload when ./node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 112ms (compile: 28ms, render: 84ms)
+ GET / 200 in 651ms (compile: 181ms, render: 470ms)
+ GET /admin/login?error=1 200 in 670ms (compile: 60ms, proxy.ts: 13ms, render: 596ms)
+ GET /admin/login?error=1 200 in 379ms (compile: 253ms, proxy.ts: 9ms, render: 117ms)
+ GET / 200 in 402ms (compile: 3ms, render: 398ms)
+ POST /api/admin/login 307 in 18ms (compile: 13ms, render: 5ms)
+ POST /admin 307 in 470ms (compile: 404ms, proxy.ts: 7ms, render: 59ms)
+ POST /admin/orders 200 in 533ms (compile: 260ms, proxy.ts: 4ms, render: 269ms)
+ GET /admin/orders/cmkwhd9tg000d68u9dynu0een 200 in 1125ms (compile: 1063ms, proxy.ts: 4ms, render: 58ms)
+ GET /admin/orders/cmkwhd9tg000d68u9dynu0een 200 in 65ms (compile: 14ms, proxy.ts: 4ms, render: 47ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 86ms (compile: 80ms, render: 6ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 76ms (compile: 72ms, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1799µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 7ms (compile: 2ms, render: 4ms)
+ GET /track/654321 200 in 806ms (compile: 692ms, render: 114ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 16ms (compile: 3ms, render: 13ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1763µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 3ms, render: 6ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1946µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 1798µs, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1932µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 21ms (compile: 11ms, render: 9ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1839µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 17ms (compile: 6ms, render: 11ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1751µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1965µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1936µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1822µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 11ms (compile: 7ms, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1886µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 10ms (compile: 6ms, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 7ms (compile: 4ms, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1748µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 2ms, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1767µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1912µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1870µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1961µs, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 10ms (compile: 6ms, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1891µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1847µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1847µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 15ms (compile: 6ms, render: 9ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1903µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1785µs, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 4ms (compile: 1751µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1824µs, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 6ms (compile: 2ms, render: 3ms)
+ GET /track 200 in 37ms (compile: 14ms, render: 23ms)
+ GET /track?trackingNumber=654321 307 in 153ms (compile: 3ms, render: 150ms)
+ GET /track/654321 200 in 86ms (compile: 8ms, render: 78ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 9ms (compile: 3ms, render: 6ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 3ms, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 2ms, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1670µs, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1722µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1819µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 14ms (compile: 6ms, render: 8ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1677µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 11ms (compile: 5ms, render: 6ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 19ms (compile: 6ms, render: 13ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 4ms (compile: 1803µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1873µs, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1765µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1912µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1724µs, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1796µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 4ms (compile: 1693µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 27ms (compile: 11ms, render: 17ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1868µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 6ms (compile: 3ms, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 10ms (compile: 6ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 2ms, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 4ms (compile: 1757µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 3ms, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 2ms, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 4ms (compile: 1829µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 20ms (compile: 6ms, render: 13ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1714µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 3ms, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1668µs, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 1930µs, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1721µs, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 2ms, render: 3ms)
+ GET / 200 in 75ms (compile: 2ms, render: 72ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 3ms, render: 5ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1724µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 2ms, render: 4ms)
+ GET /api/chat/list?orderId=cmkwhd9tg000d68u9dynu0een 401 in 5ms (compile: 1879µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 9ms (compile: 3ms, render: 6ms)
+⨯ Error [PrismaClientValidationError]: 
+Invalid `{imported module ./src/lib/prisma.ts}["default"].lead.findMany()` invocation in
+C:\Users\gagab\Desktop\autotracker\.next\dev\server\chunks\ssr\[root-of-the-server]__c7604c15._.js:441:158
+
+  438 const where = statusFilter ? {
+  439     status: statusFilter
+  440 } : undefined;
+→ 441 const leads = await {imported module ./src/lib/prisma.ts}["default"].lead.findMany({
+        where: undefined,
+        orderBy: {
+          createdAt: "desc"
+        },
+        include: {
+          order: {
+          ~~~~~
+            select: {
+              id: true,
+              trackingNumber: true,
+              accessCode: true
+            }
+          }
+        }
+      })
+
+Unknown field `order` for include statement on model `Lead`. Available options are marked with ?.
+    at <unknown> (src\app\admin\(protected)\leads\page.tsx:60:35)
+    at async LeadsPage (src\app\admin\(protected)\leads\page.tsx:60:17)
+  58 |   const statusFilter = resolvedSearchParams?.status as LeadStatus | undefined;
+  59 |   const where = statusFilter ? { status: statusFilter } : undefined;
+> 60 |   const leads = await prisma.lead.findMany({
+     |                                   ^
+  61 |     where,
+  62 |     orderBy: { createdAt: "desc" },
+  63 |     include: { {
+  clientVersion: '7.3.0',
+  digest: '3884855776'
+}
+ GET /admin/leads 200 in 384ms (compile: 298ms, proxy.ts: 4ms, render: 82ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 1797µs, render: 6ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1875µs, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 1931µs, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 5ms (compile: 1526µs, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1771µs, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 9ms (compile: 1808µs, render: 7ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 1747µs, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1619µs, render: 4ms)
+ GET /api/chat/list?trackingNumber=654321 429 in 5ms (compile: 1749µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 429 in 5ms (compile: 1870µs, render: 3ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 9ms (compile: 3ms, render: 6ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 6ms (compile: 1807µs, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 17ms (compile: 2ms, render: 15ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 9ms (compile: 2ms, render: 7ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 3ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 9ms (compile: 3ms, render: 6ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 3ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 7ms (compile: 1834µs, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 3ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 3ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 2ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 8ms (compile: 3ms, render: 5ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 9ms (compile: 2ms, render: 6ms)
+ GET /api/chat/list?trackingNumber=654321 200 in 9ms (compile: 3ms, render: 7ms)
+PS C:\Users\gagab\Desktop\autotracker> ^C
+PS C:\Users\gagab\Desktop\autotracker> ^C
+PS C:\Users\gagab\Desktop\autotracker> npm run lint
+
+
+> autotracker@0.1.0 lint
+> eslint
+
+
+C:\Users\gagab\Desktop\autotracker\src\components\tracker\files-list.tsx
+  160:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  206:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\gagab\Desktop\autotracker\src\components\tracker\tracking-view.tsx
+  385:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\gagab\Desktop\autotracker\src\components\tracker\tracking-view.tsx:385:7
+  383 |     const saved = window.localStorage.getItem(storageKey) || "";
+  384 |     if (saved) {
+> 385 |       setAccessCode(saved);
+      |       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  386 |     }
+  387 |   }, [requireCode, storageKey]);
+  388 |                                                                    react-hooks/set-state-in-effect
+  399:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+/react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\gagab\Desktop\autotracker\src\components\tracker\tracking-view.tsx:399:5
+  397 |     if (routePoints.length === 0) return;
+  398 |     const current = routePoints.find((point) => point.type === "current")?.id;
+> 399 |     setActivePointId(current || routePoints[0]?.id || null);
+      |     ^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  400 |   }, [routePoints]);
+  401 |
+  402 |   return (  react-hooks/set-state-in-effect
+
+✖ 4 problems (2 errors, 2 warnings)
+
+PS C:\Users\gagab\Desktop\autotracker> npm run test:smoke
+
+> autotracker@0.1.0 test:smoke
+> playwright test tests/smoke.spec.ts
+
+[WebServer] ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+Running 9 tests using 1 worker
+
+  ✓  1 tests\smoke.spec.ts:7:5 › home loads (883ms)
+[WebServer] ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[WebServer] Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+  ✓  2 tests\smoke.spec.ts:16:5 › catalog pages render (1.3s)
+  ✓  3 tests\smoke.spec.ts:26:5 › catalog detail page renders (968ms)
+  ✓  4 tests\smoke.spec.ts:31:5 › lead submission works (1.3s)
+  ✓  5 tests\smoke.spec.ts:39:5 › admin login page loads (460ms)
+  ✓  6 tests\smoke.spec.ts:44:5 › admin login works (803ms)
+  ✓  7 tests\smoke.spec.ts:51:5 › track page renders demo order (1.1s)
+  ✓  8 tests\smoke.spec.ts:56:5 › track page renders second demo order (511ms)
+  ✓  9 tests\smoke.spec.ts:61:5 › chat api send/list (225ms)
+
+  9 passed (12.6s)

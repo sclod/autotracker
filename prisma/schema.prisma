@@ -1,0 +1,122 @@
+// Prisma schema for autotracker
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum StageStatus {
+  done
+  in_progress
+  pending
+}
+
+enum RoutePointType {
+  checkpoint
+  current
+  start
+  end
+}
+
+enum MessageAuthor {
+  client
+  admin
+}
+
+enum AttachmentType {
+  image
+  pdf
+  other
+}
+
+enum LeadStatus {
+  new
+  contacted
+  qualified
+  converted
+  closed
+  spam
+}
+
+model Lead {
+  id        String     @id @default(cuid())
+  name      String
+  phone     String
+  message   String?
+  source    String
+  status    LeadStatus @default(new)
+  adminNote String?
+  orderId   String?
+  createdAt DateTime   @default(now())
+  order     Order?     @relation(fields: [orderId], references: [id])
+}
+
+model Order {
+  id             String        @id @default(cuid())
+  trackingNumber String        @unique
+  accessCode     String?
+  clientName     String?
+  clientPhone    String?
+  vehicleSummary String
+  vehicleVin     String?
+  vehicleLot     String?
+  etaText        String?
+  publicStatus   String?
+  lastUpdateNote String?
+  currentStageId String?
+  stages         Stage[]
+  routePoints    RoutePoint[]
+  messages       Message[]
+  attachments    Attachment[]
+  leads          Lead[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Stage {
+  id        String      @id @default(cuid())
+  orderId   String
+  title     String
+  status    StageStatus @default(pending)
+  dateText  String      @default("-")
+  comment   String      @default("")
+  sortOrder Int         @default(0)
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model RoutePoint {
+  id        String         @id @default(cuid())
+  orderId   String
+  lat       Float
+  lng       Float
+  label     String
+  type      RoutePointType @default(checkpoint)
+  sortOrder Int            @default(0)
+  createdAt DateTime       @default(now())
+  order     Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model Message {
+  id        String        @id @default(cuid())
+  orderId   String
+  author    MessageAuthor
+  text      String
+  createdAt DateTime      @default(now())
+  order     Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model Attachment {
+  id           String         @id @default(cuid())
+  orderId      String
+  stageId      String?
+  type         AttachmentType @default(image)
+  filename     String
+  originalName String
+  mime         String
+  size         Int
+  createdAt    DateTime       @default(now())
+  order        Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}

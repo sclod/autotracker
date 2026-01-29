@@ -1,0 +1,55 @@
+import type { Metadata } from "next";
+import { Manrope, Playfair_Display } from "next/font/google";
+import "./globals.css";
+import { siteConfig } from "@/config/site";
+
+const manrope = Manrope({
+  variable: "--font-body",
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-heading",
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "AutoTracker ? ?????? ? ???????? ???? ??? ????",
+    template: "%s ? AutoTracker",
+  },
+  description:
+    "??????????? ?????? ??????????? ? ?????????? ????????? ?????? ? ????????? ?????? ????????.",
+  openGraph: {
+    type: "website",
+    siteName: "AutoTracker",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AutoTracker",
+      },
+    ],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ru">
+      <body className={`${manrope.variable} ${playfair.variable} antialiased`}>
+        {children}
+      </body>
+    </html>
+  );
+}
