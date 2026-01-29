@@ -42,7 +42,7 @@ export async function generateMetadata({
           url: "/og.jpg",
           width: 1200,
           height: 630,
-          alt: `AutoTracker ? ${service.title}`,
+          alt: `AutoTracker — ${service.title}`,
         },
       ],
     },
@@ -67,15 +67,15 @@ export default async function ServiceDetailPage({
         <div className="container mx-auto space-y-8 px-6 py-12">
           <Breadcrumbs
             items={[
-              { label: "???????", href: "/" },
-              { label: "??????", href: "/services" },
+              { label: "Главная", href: "/" },
+              { label: "Услуги", href: "/services" },
               { label: service.title },
             ]}
           />
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
             <div className="space-y-5">
               <div className="text-xs uppercase tracking-[0.4em] text-muted">
-                ??????
+                Услуга
               </div>
               <h1 className="text-4xl font-semibold md:text-5xl">
                 {service.hero.title}
@@ -86,13 +86,13 @@ export default async function ServiceDetailPage({
                   href="#lead"
                   className={cn(buttonVariants({ variant: "accent" }))}
                 >
-                  {service.hero.ctaButtonLabel ?? "???????? ??????"}
+                  {service.hero.ctaButtonLabel ?? "Получить консультацию"}
                 </Link>
                 <Link
                   href="/services"
                   className={cn(buttonVariants({ variant: "outline" }))}
                 >
-                  ??? ??????
+                  Все услуги
                 </Link>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default async function ServiceDetailPage({
               source={`service-${service.slug}-hero`}
               title={service.hero.ctaTitle}
               description={service.hero.ctaDescription}
-              buttonLabel={service.hero.ctaButtonLabel ?? "????????? ??????"}
+              buttonLabel={service.hero.ctaButtonLabel ?? "Получить консультацию"}
               className="bg-card/80"
             />
           </div>
@@ -109,8 +109,8 @@ export default async function ServiceDetailPage({
 
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-[0.4em] text-muted">?????? ??</div>
-          <h2 className="text-3xl font-semibold">???????? ????????????</h2>
+          <div className="text-xs uppercase tracking-[0.4em] text-muted">Почему мы</div>
+          <h2 className="text-3xl font-semibold">Наши преимущества</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {service.advantages.map((advantage) => (
@@ -126,8 +126,8 @@ export default async function ServiceDetailPage({
 
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-[0.4em] text-muted">??? ????????</div>
-          <h2 className="text-3xl font-semibold">?????????? ????? ??????</h2>
+          <div className="text-xs uppercase tracking-[0.4em] text-muted">Как работаем</div>
+          <h2 className="text-3xl font-semibold">Этапы работы</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {service.steps.map((step, index) => (
@@ -149,7 +149,7 @@ export default async function ServiceDetailPage({
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
           <div className="text-xs uppercase tracking-[0.4em] text-muted">FAQ</div>
-          <h2 className="text-3xl font-semibold">?????? ???????</h2>
+          <h2 className="text-3xl font-semibold">Частые вопросы</h2>
         </div>
         <div className="space-y-4">
           {service.faq.map((item) => (
@@ -168,8 +168,8 @@ export default async function ServiceDetailPage({
 
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-[0.4em] text-muted">???????</div>
-          <h2 className="text-3xl font-semibold">????????????? ?????????</h2>
+          <div className="text-xs uppercase tracking-[0.4em] text-muted">Команда</div>
+          <h2 className="text-3xl font-semibold">Команда и контакты</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {service.team.map((member) => (
@@ -196,7 +196,7 @@ export default async function ServiceDetailPage({
       <section className="container mx-auto px-6" id="lead">
         <div className="grid gap-8 rounded-3xl border border-border/60 bg-card-muted p-10 lg:grid-cols-[1.2fr_1fr]">
           <div className="space-y-4">
-            <div className="text-xs uppercase tracking-[0.4em] text-muted">??????</div>
+            <div className="text-xs uppercase tracking-[0.4em] text-muted">Заявка</div>
             <h2 className="text-3xl font-semibold">{service.cta.title}</h2>
             <p className="text-muted">{service.cta.description}</p>
           </div>
@@ -204,7 +204,7 @@ export default async function ServiceDetailPage({
             source={`service-${service.slug}-cta`}
             title=""
             description=""
-            buttonLabel={service.cta.buttonLabel ?? "????????? ??????"}
+            buttonLabel={service.cta.buttonLabel ?? "Получить консультацию"}
             className="bg-transparent border-none p-0"
           />
         </div>

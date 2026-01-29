@@ -40,14 +40,14 @@ export default async function CatalogDetailPage({
   const gallery = car.images.length > 0 ? car.images : ["/placeholders/media.svg"];
   const preview = gallery[0];
   const thumbs = gallery.slice(1, 5);
-  const leadMessage = `?????????? ${car.name} (${car.year} ?., ${car.location}). ????? ?? ?????? ????????? ? ????? ????????.`;
+  const leadMessage = `Интересует ${car.name} (${car.year} г., ${car.location}). Прошу уточнить стоимость и условия доставки.`;
 
   return (
     <section className="container mx-auto flex flex-col gap-10 px-6">
       <Breadcrumbs
         items={[
-          { label: "???????", href: "/" },
-          { label: "???????", href: "/catalog" },
+          { label: "Главная", href: "/" },
+          { label: "Каталог", href: "/catalog" },
           { label: regionLabel, href: `/catalog/${region}` },
           { label: makeItem.title, href: `/catalog/${region}/${makeItem.slug}` },
           { label: car.name },
@@ -56,7 +56,7 @@ export default async function CatalogDetailPage({
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
         <div className="space-y-4">
           <div className="text-xs uppercase tracking-[0.4em] text-muted">
-            ???????? ????
+            Карточка авто
           </div>
           <h1 className="text-4xl font-semibold">{car.name}</h1>
           <p className="text-muted">{car.description}</p>
@@ -103,31 +103,31 @@ export default async function CatalogDetailPage({
         </div>
         <Card className="bg-card/80">
           <CardHeader>
-            <CardTitle>???????? ?????????</CardTitle>
+            <CardTitle>Характеристики</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted">
             <div className="flex items-center justify-between">
-              <span>?????????</span>
+              <span>Цена</span>
               <span className="text-foreground">{formatPrice(car.price)}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span>???</span>
+              <span>Год</span>
               <span>{car.year}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span>??????</span>
+              <span>Пробег</span>
               <span>{formatMileage(car.mileageKm)}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span>??????</span>
+              <span>Регион</span>
               <span>{regionLabel}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span>??????</span>
+              <span>Статус</span>
               <span className="text-foreground">{carStatusLabels[car.status]}</span>
             </div>
             <Link href="#lead" className={cn(buttonVariants({ variant: "accent" }))}>
-              ????????? ??????
+              Запросить подбор
             </Link>
           </CardContent>
         </Card>
@@ -136,9 +136,9 @@ export default async function CatalogDetailPage({
       <div id="lead">
         <LeadForm
           source={`catalog-${region}-${makeItem.slug}-${id}`}
-          title="????????? ???? ??????????"
-          description="???????? ?????? ? ???????? ???????? ? ??????? ?????? ?? ????."
-          buttonLabel="???????? ??????"
+          title="Получить подбор и расчёт"
+          description="Уточним доступность, сроки и стоимость. Ответим быстро."
+          buttonLabel="Отправить заявку"
           defaultValues={{ message: leadMessage }}
         />
       </div>

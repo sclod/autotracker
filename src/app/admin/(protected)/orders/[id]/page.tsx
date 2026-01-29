@@ -29,7 +29,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { key: "tracker", label: "Tracker" },
+  { key: "tracker", label: "Трекер" },
   { key: "overview", label: "Обзор" },
   { key: "stages", label: "Этапы" },
   { key: "map", label: "Маршрут" },
@@ -120,7 +120,7 @@ export default async function OrderDetailPage({
           <input type="hidden" name="orderId" value={order.id} />
           <input type="hidden" name="trackingNumber" value={order.trackingNumber} />
           <Button variant="accent" size="sm" type="submit">
-            Следующий in progress
+            Следующий — в работе
           </Button>
         </form>
         <form action={shiftEtaAction}>
@@ -146,13 +146,13 @@ export default async function OrderDetailPage({
   const sendToClientPanel = (
     <Card className="bg-card/80">
       <CardHeader>
-        <CardTitle>????????? ???????</CardTitle>
+        <CardTitle>Отправить клиенту</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4 md:grid-cols-[1fr_auto] md:items-start">
         <div className="space-y-3">
           <div className="space-y-1">
             <div className="text-xs uppercase tracking-[0.2em] text-muted">
-              ?????? ????????
+              Ссылка трекинга
             </div>
             <div className="rounded-xl border border-border/60 bg-card px-3 py-2 text-sm text-foreground">
               {`/track/${order.trackingNumber}`}
@@ -160,12 +160,12 @@ export default async function OrderDetailPage({
           </div>
           <div className="space-y-1">
             <div className="text-xs uppercase tracking-[0.2em] text-muted">
-              ??? ???????
+              Код доступа
             </div>
             <div className="rounded-xl border border-border/60 bg-card px-3 py-2 text-sm text-foreground">
-              {order.accessCode || "?"}
+              {order.accessCode || "—"}
             </div>
-            <p className="text-xs text-muted">??? ????? ??? ???? ? ??????.</p>
+            <p className="text-xs text-muted">Код нужен для чата и файлов.</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-2 md:flex-col md:items-stretch">
@@ -173,8 +173,8 @@ export default async function OrderDetailPage({
           {order.accessCode && (
             <CopyValueButton
               value={order.accessCode}
-              label="??????????? ???"
-              copiedLabel="??? ??????????"
+              label="Скопировать код"
+              copiedLabel="Код скопирован"
             />
           )}
         </div>
@@ -385,8 +385,7 @@ export default async function OrderDetailPage({
           <div>
             <CardTitle>Заказ {order.trackingNumber}</CardTitle>
             <p className="text-sm text-muted">
-              Создан {formatDateTime(order.createdAt)} · Обновлён{" "}
-              {formatDateTime(order.updatedAt)}
+              Создан {formatDateTime(order.createdAt)} · Обновлён {formatDateTime(order.updatedAt)}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -418,9 +417,7 @@ export default async function OrderDetailPage({
             <div className="text-xs uppercase tracking-[0.2em] text-muted">Клиент</div>
             <div className="text-sm text-foreground">{order.clientName || "—"}</div>
             <div className="text-xs text-muted">Телефон: {order.clientPhone || "—"}</div>
-            <div className="text-xs text-muted">
-              Код доступа: {order.accessCode || "—"}
-            </div>
+            <div className="text-xs text-muted">Код доступа: {order.accessCode || "—"}</div>
             <form action={regenerateAccessCodeAction}>
               <input type="hidden" name="orderId" value={order.id} />
               <input type="hidden" name="trackingNumber" value={order.trackingNumber} />

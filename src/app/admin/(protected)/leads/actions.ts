@@ -7,7 +7,7 @@ import { generateTrackingNumber } from "@/lib/tracking";
 import { normalizeText } from "@/lib/validation";
 import type { LeadStatus } from "@prisma/client";
 
-const DEFAULT_VEHICLE_SUMMARY = "?????? ? ?????";
+const DEFAULT_VEHICLE_SUMMARY = "Авто под подбор";
 
 export type ConvertLeadState = {
   ok: boolean;
@@ -22,7 +22,7 @@ export async function updateLeadStatusAction(formData: FormData) {
   const status = formData.get("status")?.toString() as LeadStatus | undefined;
 
   if (!leadId || !status) {
-    throw new Error("???????? ?????? ???????");
+    throw new Error("Неверные данные лида");
   }
 
   await prisma.lead.update({
@@ -38,7 +38,7 @@ export async function updateLeadNoteAction(formData: FormData) {
   const adminNote = normalizeText(formData.get("adminNote")?.toString(), 1000);
 
   if (!leadId) {
-    throw new Error("?? ?????? ???");
+    throw new Error("Не найден лид");
   }
 
   await prisma.lead.update({
@@ -60,7 +60,7 @@ export async function convertLeadAction(
   const etaText = normalizeText(formData.get("etaText")?.toString(), 40);
 
   if (!leadId) {
-    return { ok: false, message: "?? ?????? ???" };
+    return { ok: false, message: "Не найден лид" };
   }
 
   try {
@@ -70,7 +70,7 @@ export async function convertLeadAction(
     });
 
     if (!lead) {
-      return { ok: false, message: "??? ?? ??????" };
+      return { ok: false, message: "Лид не найден" };
     }
 
     if (lead.order) {
@@ -114,6 +114,6 @@ export async function convertLeadAction(
     };
   } catch (error) {
     console.error(error);
-    return { ok: false, message: "?? ??????? ?????????????? ???" };
+    return { ok: false, message: "Не удалось конвертировать лид" };
   }
 }
