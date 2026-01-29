@@ -68,7 +68,7 @@ export async function GET(
       return NextResponse.json({ error: "file_missing" }, { status: 404 });
     }
 
-    return new NextResponse(buffer, {
+    return new NextResponse(new Uint8Array(buffer), {
       headers: {
         "Content-Type": attachment.mime || "application/octet-stream",
         "Content-Disposition": `inline; filename="${attachment.originalName}"`,

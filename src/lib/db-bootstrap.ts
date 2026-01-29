@@ -1,6 +1,4 @@
-import type Database from "better-sqlite3";
-
-export function ensureSchema(db: Database) {
+export function ensureSchema(db: any) {
   db.exec(`
     PRAGMA foreign_keys = ON;
 
