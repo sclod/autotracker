@@ -59,7 +59,7 @@ export function LeadForm({
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Link
-              href="/catalog"
+              href="/catalog/usa"
               className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
             >
               Каталог

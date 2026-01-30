@@ -23,10 +23,9 @@ const footerLinks = [
   {
     title: "Каталог",
     items: [
-      { href: "/catalog", label: "Все авто" },
+      { href: "/catalog/usa", label: "США" },
       { href: "/catalog/eu", label: "Европа" },
-      { href: "/catalog/cn", label: "Китай" },
-      { href: "/catalog/kr", label: "Корея" },
+      { href: "/catalog/china", label: "Китай" },
     ],
   },
 ];
@@ -49,7 +48,7 @@ export function SiteFooter() {
             <span className="text-accent">{siteConfig.brand.accent}</span>
           </div>
           <p className="text-sm text-muted">
-            Доставка автомобилей из Европы, Китая и Кореи. Прозрачный трекер,
+            Доставка автомобилей из США, Европы и Китая. Прозрачный трекер,
             фиксируем условия и сроки.
           </p>
           <div className="text-sm text-muted">

@@ -12,12 +12,12 @@ import { deliverySteps, managers, reasons } from "@/data/home";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Авто из Европы, Китая и Кореи — AutoTracker",
+  title: "Авто из США, Европы и Китая — AutoTracker",
   description:
     "Подбор, проверка и доставка автомобилей под ключ. Прозрачные этапы, трекинг заказа, сопровождение на каждом шаге.",
   alternates: { canonical: siteConfig.url },
   openGraph: {
-    title: "Авто из Европы, Китая и Кореи — AutoTracker",
+    title: "Авто из США, Европы и Китая — AutoTracker",
     description:
       "Подбор, проверка и доставка автомобилей под ключ. Прозрачные этапы, трекинг заказа, сопровождение на каждом шаге.",
     url: siteConfig.url,
@@ -63,7 +63,7 @@ export default function HomePage() {
                   Получить консультацию
                 </Link>
                 <Link
-                  href="/catalog"
+                  href="/catalog/usa"
                   className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
                 >
                   Каталог и марки

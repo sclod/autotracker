@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { LeadForm } from "@/components/lead-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,8 +10,20 @@ import { formatMileage, formatPrice } from "@/lib/catalog";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-function isRegion(value: string): value is RegionKey {
-  return value === "eu" || value === "cn" || value === "kr";
+const REGION_REDIRECTS: Record<string, string> = {
+  cn: "/catalog/china",
+  kr: "/catalog/usa",
+  korea: "/catalog/usa",
+};
+
+function resolveRegion(value: string): RegionKey | null {
+  if (value === "usa" || value === "eu" || value === "china") {
+    return value;
+  }
+  if (REGION_REDIRECTS[value]) {
+    redirect(REGION_REDIRECTS[value]);
+  }
+  return null;
 }
 
 export default async function CatalogDetailPage({
@@ -20,18 +32,20 @@ export default async function CatalogDetailPage({
   params: Promise<{ region: string; make: string; id: string }>;
 }) {
   const { region, make, id } = await params;
-  if (!isRegion(region)) {
+  const resolvedRegion = resolveRegion(region);
+  if (!resolvedRegion) {
     notFound();
   }
 
-  const regionLabel = REGION_LABELS[region];
-  const makeItem = MAKES[region].find((item) => item.slug === make);
+  const regionLabel = REGION_LABELS[resolvedRegion];
+  const makeItem = MAKES[resolvedRegion].find((item) => item.slug === make);
   if (!makeItem) {
     notFound();
   }
 
   const car = cars.find(
-    (item) => item.id === id && item.region === region && item.makeSlug === make
+    (item) =>
+      item.id === id && item.region === resolvedRegion && item.makeSlug === make
   );
   if (!car) {
     notFound();
@@ -47,9 +61,12 @@ export default async function CatalogDetailPage({
       <Breadcrumbs
         items={[
           { label: "Главная", href: "/" },
-          { label: "Каталог", href: "/catalog" },
-          { label: regionLabel, href: `/catalog/${region}` },
-          { label: makeItem.title, href: `/catalog/${region}/${makeItem.slug}` },
+          { label: "Каталог" },
+          { label: regionLabel, href: `/catalog/${resolvedRegion}` },
+          {
+            label: makeItem.title,
+            href: `/catalog/${resolvedRegion}/${makeItem.slug}`,
+          },
           { label: car.name },
         ]}
       />
@@ -135,7 +152,7 @@ export default async function CatalogDetailPage({
 
       <div id="lead">
         <LeadForm
-          source={`catalog-${region}-${makeItem.slug}-${id}`}
+          source={`catalog-${resolvedRegion}-${makeItem.slug}-${id}`}
           title="Получить подбор и расчёт"
           description="Уточним доступность, сроки и стоимость. Ответим быстро."
           buttonLabel="Отправить заявку"

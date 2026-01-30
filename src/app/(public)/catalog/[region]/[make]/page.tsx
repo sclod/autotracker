@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { LeadForm } from "@/components/lead-form";
 import { CarCard } from "@/components/catalog/car-card";
@@ -15,8 +15,20 @@ import {
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-function isRegion(value: string): value is RegionKey {
-  return value === "eu" || value === "cn" || value === "kr";
+const REGION_REDIRECTS: Record<string, string> = {
+  cn: "/catalog/china",
+  kr: "/catalog/usa",
+  korea: "/catalog/usa",
+};
+
+function resolveRegion(value: string): RegionKey | null {
+  if (value === "usa" || value === "eu" || value === "china") {
+    return value;
+  }
+  if (REGION_REDIRECTS[value]) {
+    redirect(REGION_REDIRECTS[value]);
+  }
+  return null;
 }
 
 export default async function CatalogMakePage({
@@ -27,19 +39,20 @@ export default async function CatalogMakePage({
   searchParams?: Promise<Record<string, string | undefined>>;
 }) {
   const { region, make } = await params;
-  if (!isRegion(region)) {
+  const resolvedRegion = resolveRegion(region);
+  if (!resolvedRegion) {
     notFound();
   }
 
-  const regionLabel = REGION_LABELS[region];
-  const makeItem = MAKES[region].find((item) => item.slug === make);
+  const regionLabel = REGION_LABELS[resolvedRegion];
+  const makeItem = MAKES[resolvedRegion].find((item) => item.slug === make);
   if (!makeItem) {
     notFound();
   }
 
   const resolvedParams = (await searchParams) ?? {};
   const baseCars = cars.filter(
-    (car) => car.region === region && car.makeSlug === makeItem.slug
+    (car) => car.region === resolvedRegion && car.makeSlug === makeItem.slug
   );
 
   const filters = {
@@ -60,8 +73,8 @@ export default async function CatalogMakePage({
       <Breadcrumbs
         items={[
           { label: "Главная", href: "/" },
-          { label: "Каталог", href: "/catalog" },
-          { label: regionLabel, href: `/catalog/${region}` },
+          { label: "Каталог" },
+          { label: regionLabel, href: `/catalog/${resolvedRegion}` },
           { label: makeItem.title },
         ]}
       />
@@ -150,7 +163,7 @@ export default async function CatalogMakePage({
             Применить
           </button>
           <Link
-            href={`/catalog/${region}/${makeItem.slug}`}
+            href={`/catalog/${resolvedRegion}/${makeItem.slug}`}
             className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
           >
             Сбросить
@@ -171,7 +184,7 @@ export default async function CatalogMakePage({
       )}
 
       <LeadForm
-        source={`catalog-${region}-${makeItem.slug}`}
+        source={`catalog-${resolvedRegion}-${makeItem.slug}`}
         title="Получить консультацию"
         description="Подскажем по срокам, стоимости и доступным лотам."
         buttonLabel="Отправить запрос"
