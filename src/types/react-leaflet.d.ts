@@ -6,5 +6,5 @@
   export const Marker: React.ComponentType<LeafletProps>;
   export const Popup: React.ComponentType<LeafletProps>;
   export const Polyline: React.ComponentType<LeafletProps>;
-  export function useMap(): unknown;
+  export function useMap(): any;
 }

@@ -94,7 +94,7 @@ export function RouteMapClient({
   if (points.length < 2) {
     return (
       <div className="flex h-80 w-full items-center justify-center rounded-2xl border border-border/60 bg-card/60 text-sm text-muted">
-        Маршрут еще не задан.
+        Маршрут ещё не задан.
       </div>
     );
   }
