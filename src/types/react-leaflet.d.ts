@@ -1,9 +1,10 @@
 ﻿declare module "react-leaflet" {
   import * as React from "react";
-  export const MapContainer: React.ComponentType<any>;
-  export const TileLayer: React.ComponentType<any>;
-  export const Marker: React.ComponentType<any>;
-  export const Popup: React.ComponentType<any>;
-  export const Polyline: React.ComponentType<any>;
-  export function useMap(): any;
+  type LeafletProps = Record<string, unknown>;
+  export const MapContainer: React.ComponentType<LeafletProps>;
+  export const TileLayer: React.ComponentType<LeafletProps>;
+  export const Marker: React.ComponentType<LeafletProps>;
+  export const Popup: React.ComponentType<LeafletProps>;
+  export const Polyline: React.ComponentType<LeafletProps>;
+  export function useMap(): unknown;
 }

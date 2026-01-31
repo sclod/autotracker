@@ -27,7 +27,7 @@
   },
   {
     id: "demo-3",
-    region: "cn",
+    region: "china",
     makeSlug: "zeekr",
     slug: "zeekr-001-2023",
     name: "Zeekr 001",

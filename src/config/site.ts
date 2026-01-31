@@ -14,9 +14,9 @@ export const siteConfig = {
   socials: {
     telegram: "https://t.me/autotracker",
     whatsapp: "https://wa.me/79005551234",
-    vk: "",
+    vk: "https://vk.com/autotracker",
   },
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://autotracker.ru",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://mskmkad-auto.ru",
 };
 
 export const sitePlaceholders = {

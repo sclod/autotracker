@@ -7,9 +7,9 @@ import { MAKES, type Make, type RegionKey } from "@/data/makes";
 import { cn } from "@/lib/utils";
 
 const tabs: { key: RegionKey; label: string }[] = [
+  { key: "usa", label: "США" },
   { key: "eu", label: "Европы" },
-  { key: "cn", label: "Китая" },
-  { key: "kr", label: "Кореи" },
+  { key: "china", label: "Китая" },
 ];
 
 function getInitials(name: string) {
@@ -23,20 +23,20 @@ function MakeLogo({ make }: { make: Make }) {
   const [failed, setFailed] = useState(false);
   if (!make.image || failed) {
     return (
-    <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border/70 bg-card text-base font-semibold text-muted">
+      <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border/70 bg-card text-sm font-semibold text-muted shadow-[0_8px_30px_rgba(0,0,0,0.35)] md:h-20 md:w-20 md:text-base">
         {getInitials(make.title)}
       </div>
     );
   }
 
   return (
-    <div className="flex h-16 w-16 items-center justify-center">
+    <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border/70 bg-card shadow-[0_8px_30px_rgba(0,0,0,0.35)] md:h-20 md:w-20">
       <Image
         src={make.image}
         alt={make.title}
-        width={80}
-        height={80}
-        className="h-16 w-16 object-contain"
+        width={56}
+        height={56}
+        className="h-10 w-10 object-contain md:h-12 md:w-12"
         onError={() => setFailed(true)}
       />
     </div>
@@ -44,7 +44,7 @@ function MakeLogo({ make }: { make: Make }) {
 }
 
 export function MakesSection() {
-  const [region, setRegion] = useState<RegionKey>("eu");
+  const [region, setRegion] = useState<RegionKey>("usa");
 
   const makes = useMemo(() => MAKES[region] ?? [], [region]);
 

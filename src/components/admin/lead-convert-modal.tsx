@@ -13,9 +13,9 @@ import { CopyTrackingLink } from "@/components/admin/copy-tracking-link";
 import { CopyValueButton } from "@/components/admin/copy-value-button";
 
 const regionOptions = [
+  { value: "США", label: "США" },
   { value: "Европа", label: "Европа" },
   { value: "Китай", label: "Китай" },
-  { value: "Корея", label: "Корея" },
   { value: "Другое", label: "Другое" },
 ];
 

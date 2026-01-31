@@ -18,7 +18,7 @@ export function isValidAccessCode(value: string) {
 }
 
 export function isDemoTrackingAllowed() {
-  return process.env.NODE_ENV !== "production" && process.env.SEED_DEMO === "true";
+  return process.env.SEED_DEMO === "true";
 }
 
 export function normalizeText(value: string | null | undefined, maxLength: number) {

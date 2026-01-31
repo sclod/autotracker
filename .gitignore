@@ -17,6 +17,7 @@ prisma/*.db
 prisma/*.db-journal
 data/*.db
 data/*.db-journal
+dev.db
 
 # uploads
 data/uploads/

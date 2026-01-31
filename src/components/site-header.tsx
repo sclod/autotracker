@@ -7,7 +7,6 @@ const navItems = [
   { href: "/about", label: "О компании" },
   { href: "/services", label: "Услуги" },
   { href: "/reviews", label: "Отзывы" },
-  { href: "/blog", label: "Полезное" },
   { href: "/contact", label: "Контакты" },
   { href: "/track", label: "Трекер" },
 ];
@@ -43,7 +42,7 @@ export function SiteHeader({ className }: { className?: string }) {
           </Link>
         </div>
         <nav className="flex w-full flex-wrap items-center gap-3 text-sm text-muted lg:w-auto lg:justify-center">
-          <div className="group relative pb-2">
+          <div className="group relative flex items-center">
             <button
               type="button"
               className="rounded-full border border-transparent px-3 py-1 transition hover:border-border hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
@@ -53,7 +52,7 @@ export function SiteHeader({ className }: { className?: string }) {
             </button>
             <div
               className={cn(
-                "absolute left-0 top-full z-50 mt-0 w-48 rounded-2xl border border-border/60 bg-card/95 p-2 shadow-[0_16px_40px_rgba(0,0,0,0.25)] backdrop-blur",
+                "absolute left-0 top-full z-50 mt-2 w-48 rounded-2xl border border-border/60 bg-card/95 p-2 shadow-[0_16px_40px_rgba(0,0,0,0.25)] backdrop-blur",
                 "opacity-0 pointer-events-none transition group-hover:opacity-100 group-hover:pointer-events-auto",
                 "group-focus-within:opacity-100 group-focus-within:pointer-events-auto"
               )}
@@ -80,12 +79,6 @@ export function SiteHeader({ className }: { className?: string }) {
           ))}
         </nav>
         <div className="flex flex-wrap items-center gap-3">
-          <Link
-            href="/catalog/usa"
-            className={cn(buttonVariants({ variant: "outline" }))}
-          >
-            Каталог
-          </Link>
           <Link
             href="/contact"
             className={cn(buttonVariants({ variant: "accent" }))}

@@ -49,4 +49,4 @@
 - [x] `npm run test:smoke` (2026-01-30)
 - [x] `npm run shots` (2026-01-30)
 - [x] `rg -n "korea|\\bkr\\b|коре" src` (UI-хвостов нет, только редиректы)
-- [x] Скрины: `artifacts/screenshots/2026-01-30T17-16-21-397Z`
+- [x] Скрины: `artifacts/screenshots/2026-01-30T18-48-13-602Z`

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MakesSection } from "@/components/home/makes-section";
@@ -188,18 +188,28 @@ export default function HomePage() {
           {managers.map((manager) => (
             <Card key={manager.name} className="bg-card/80">
               <CardContent className="space-y-4 p-6">
-                <Image
-                  src="/placeholders/person.svg"
-                  alt={manager.name}
-                  width={320}
-                  height={320}
-                  className="h-40 w-full rounded-2xl object-cover"
-                />
-                <div>
-                  <div className="text-base font-semibold">{manager.name}</div>
-                  <div className="text-sm text-muted">{manager.role}</div>
+                <div className="relative mx-auto h-40 w-40 md:h-48 md:w-48">
+                  <div className="absolute inset-0 rounded-full bg-accent/90 shadow-[0_18px_36px_rgba(255,230,0,0.28)]" />
+                  <Image
+                    src={manager.image}
+                    alt={manager.name}
+                    fill
+                    quality={100}
+                    sizes="(max-width: 768px) 160px, 192px"
+                    className="relative z-10 rounded-full object-cover ring-4 ring-background/90"
+                  />
                 </div>
-                <div className="text-sm text-muted">{manager.phone}</div>
+                <div>
+                  <div className="text-base font-semibold text-center">
+                    {manager.name}
+                  </div>
+                  <div className="text-sm text-muted text-center">
+                    {manager.role}
+                  </div>
+                </div>
+                <div className="text-sm text-muted text-center">
+                  {manager.phone}
+                </div>
               </CardContent>
             </Card>
           ))}

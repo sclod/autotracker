@@ -1,4 +1,5 @@
-import type { ServiceContent } from "./types";
+﻿import type { ServiceContent } from "./types";
+import { serviceTeam } from "./team";
 
 const selection: ServiceContent = {
   slug: "selection",
@@ -71,18 +72,7 @@ const selection: ServiceContent = {
         "Первые варианты — в течение 24–48 часов после брифа.",
     },
   ],
-  team: [
-    {
-      name: "Александр Орлов",
-      role: "Руководитель отдела подбора",
-      phone: "+7 (900) 555-12-34",
-    },
-    {
-      name: "Екатерина Мельникова",
-      role: "Куратор сделок",
-      phone: "+7 (900) 555-23-45",
-    },
-  ],
+  team: serviceTeam,
   cta: {
     title: "Готовы подобрать авто?",
     description: "Оставьте заявку — менеджер свяжется и уточнит детали.",
@@ -91,3 +81,4 @@ const selection: ServiceContent = {
 };
 
 export default selection;
+

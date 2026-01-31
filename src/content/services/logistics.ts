@@ -1,4 +1,5 @@
-import type { ServiceContent } from "./types";
+﻿import type { ServiceContent } from "./types";
+import { serviceTeam } from "./team";
 
 const logistics: ServiceContent = {
   slug: "logistics",
@@ -71,18 +72,7 @@ const logistics: ServiceContent = {
         "В трекере заказа — там отображаются этапы и маршрут.",
     },
   ],
-  team: [
-    {
-      name: "Илья Белов",
-      role: "Специалист по логистике",
-      phone: "+7 (900) 555-34-56",
-    },
-    {
-      name: "Наталья Соколова",
-      role: "Менеджер по доставке",
-      phone: "+7 (900) 555-45-67",
-    },
-  ],
+  team: serviceTeam,
   cta: {
     title: "Нужна логистика под ваш авто?",
     description: "Подготовим маршрут и сроки, ответим на вопросы.",
@@ -91,3 +81,4 @@ const logistics: ServiceContent = {
 };
 
 export default logistics;
+

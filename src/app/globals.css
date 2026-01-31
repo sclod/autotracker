@@ -2,15 +2,16 @@
 @import "leaflet/dist/leaflet.css";
 
 :root {
-  --background: #0b0d11;
-  --foreground: #f2f5f9;
-  --muted: #98a2b3;
-  --card: #12151c;
-  --card-muted: #0f1319;
-  --accent: #d8b56a;
-  --accent-2: #4cc3ff;
-  --border: #1f2632;
-  --ring: #2f3a4d;
+  --background: #10141c;
+  --foreground: #f5f7fb;
+  --muted: #a4aec2;
+  --card: #171c27;
+  --card-muted: #131822;
+  --accent: #ffe600;
+  --accent-2: #6ad1ff;
+  --accent-glow: 255 230 0;
+  --border: #262f3f;
+  --ring: #3a465a;
   --tracker-card-bg: rgba(17, 21, 30, 0.72);
   --tracker-card-border: rgba(255, 255, 255, 0.08);
   --tracker-card-shadow: 0 24px 60px rgba(2, 6, 12, 0.45);
@@ -21,8 +22,8 @@
   --tracker-label: #8c97ad;
   --tracker-pill-done: rgba(45, 212, 138, 0.18);
   --tracker-pill-done-border: rgba(45, 212, 138, 0.4);
-  --tracker-pill-progress: rgba(216, 181, 106, 0.18);
-  --tracker-pill-progress-border: rgba(216, 181, 106, 0.5);
+  --tracker-pill-progress: rgba(255, 230, 0, 0.18);
+  --tracker-pill-progress-border: rgba(255, 230, 0, 0.5);
   --tracker-pill-pending: rgba(148, 163, 184, 0.12);
   --tracker-pill-pending-border: rgba(148, 163, 184, 0.35);
   --header-h: 96px;
@@ -49,7 +50,10 @@
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(900px 520px at 8% -10%, rgba(255, 230, 0, 0.12), transparent 60%),
+    radial-gradient(820px 520px at 92% 0%, rgba(106, 209, 255, 0.12), transparent 55%),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   min-height: 100%;
@@ -58,6 +62,10 @@ body {
 
 .pt-header {
   padding-top: var(--header-h);
+}
+
+:target {
+  scroll-margin-top: var(--header-h);
 }
 
 h1,
@@ -73,6 +81,24 @@ h4 {
 }
 
 @layer components {
+  .accent-glow {
+    filter: drop-shadow(0 0 18px rgb(var(--accent-glow) / 0.35));
+  }
+
+  .card-glass {
+    background: rgba(18, 22, 32, 0.72);
+    backdrop-filter: blur(12px);
+  }
+
+  .section-light {
+    background: #f7f5ef;
+    color: #0f172a;
+  }
+
+  .section-light .text-muted {
+    color: #5b6478;
+  }
+
   .tracker-theme {
     --tracker-card-bg: rgba(17, 21, 30, 0.72);
     --tracker-card-border: rgba(255, 255, 255, 0.08);
@@ -168,7 +194,7 @@ h4 {
 
   .tracker-input:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(216, 181, 106, 0.35);
+    box-shadow: 0 0 0 2px rgba(255, 230, 0, 0.35);
   }
 
   .tracker-clamp {
@@ -200,9 +226,9 @@ h4 {
   }
 
   .tracker-timeline-dot--progress {
-    background: rgba(216, 181, 106, 0.25);
-    color: #f8e4a9;
-    box-shadow: 0 0 0 6px rgba(216, 181, 106, 0.18);
+    background: rgba(255, 230, 0, 0.25);
+    color: #fff3a1;
+    box-shadow: 0 0 0 6px rgba(255, 230, 0, 0.18);
   }
 
   .tracker-timeline-dot--pending {
@@ -227,8 +253,8 @@ h4 {
   }
 
   .tracker-timeline-card--current {
-    border-color: rgba(216, 181, 106, 0.5);
-    box-shadow: 0 0 40px rgba(216, 181, 106, 0.2);
+    border-color: rgba(255, 230, 0, 0.5);
+    box-shadow: 0 0 40px rgba(255, 230, 0, 0.2);
   }
 
   .tracker-timeline-accordion {
@@ -251,13 +277,13 @@ h4 {
   }
 
   .tracker-checkpoint:hover {
-    border-color: rgba(216, 181, 106, 0.5);
-    background: rgba(216, 181, 106, 0.12);
+    border-color: rgba(255, 230, 0, 0.5);
+    background: rgba(255, 230, 0, 0.12);
   }
 
   .tracker-checkpoint--active {
-    border-color: rgba(216, 181, 106, 0.6);
-    background: rgba(216, 181, 106, 0.18);
+    border-color: rgba(255, 230, 0, 0.6);
+    background: rgba(255, 230, 0, 0.18);
     color: var(--foreground);
   }
 
@@ -281,5 +307,24 @@ h4 {
     100% {
       transform: translateX(100%);
     }
+  }
+
+  .region-arc {
+    stroke-dasharray: 520;
+    stroke-dashoffset: 520;
+    animation: region-dash 1.6s ease forwards;
+  }
+
+  @keyframes region-dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .region-arc {
+    animation: none;
+    stroke-dashoffset: 0;
   }
 }

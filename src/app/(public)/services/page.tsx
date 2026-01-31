@@ -43,7 +43,7 @@ export default function ServicesPage() {
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-muted">
               {service.advantages.slice(0, 3).map((advantage) => (
-                <div key={advantage.title}>? {advantage.title}</div>
+                <div key={advantage.title}>• {advantage.title}</div>
               ))}
               <Link
                 href={`/services/${service.slug}`}

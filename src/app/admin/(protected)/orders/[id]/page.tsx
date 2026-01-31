@@ -78,7 +78,7 @@ export default async function OrderDetailPage({
       <CardContent>
         <form
           action={updateOrderSummaryAction}
-          className="grid gap-4 md:grid-cols-[1fr_1fr_2fr_auto]"
+          className="grid gap-4 lg:grid-cols-[1fr_1fr_2fr_auto]"
         >
           <input type="hidden" name="orderId" value={order.id} />
           <input type="hidden" name="trackingNumber" value={order.trackingNumber} />
@@ -148,7 +148,7 @@ export default async function OrderDetailPage({
       <CardHeader>
         <CardTitle>Отправить клиенту</CardTitle>
       </CardHeader>
-      <CardContent className="grid gap-4 md:grid-cols-[1fr_auto] md:items-start">
+      <CardContent className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-start">
         <div className="space-y-3">
           <div className="space-y-1">
             <div className="text-xs uppercase tracking-[0.2em] text-muted">
@@ -217,7 +217,7 @@ export default async function OrderDetailPage({
         <RouteMap points={routePoints} />
         <form
           action={addRoutePointAction}
-          className="grid gap-3 rounded-2xl border border-border/60 bg-card/70 p-4 md:grid-cols-[2fr_1fr_1fr_1fr_auto]"
+          className="grid gap-3 rounded-2xl border border-border/60 bg-card/70 p-4 lg:grid-cols-[2fr_1fr_1fr_1fr_auto]"
         >
           <input type="hidden" name="orderId" value={order.id} />
           <input type="hidden" name="trackingNumber" value={order.trackingNumber} />
@@ -244,7 +244,7 @@ export default async function OrderDetailPage({
             order.routePoints.map((point) => (
               <div
                 key={point.id}
-                className="grid gap-3 rounded-2xl border border-border/60 bg-card/70 p-4 md:grid-cols-[2fr_1fr_1fr_1fr_auto_auto_auto]"
+                className="grid gap-3 rounded-2xl border border-border/60 bg-card/70 p-4 lg:grid-cols-[2fr_1fr_1fr_1fr_auto_auto_auto]"
               >
                 <form action={updateRoutePointAction} className="contents">
                   <input type="hidden" name="pointId" value={point.id} />
@@ -320,7 +320,7 @@ export default async function OrderDetailPage({
         )}
         <form
           action={uploadAttachmentsAction}
-          className="grid gap-3 rounded-2xl border border-border/60 bg-card/70 p-4 md:grid-cols-[2fr_1fr_auto]"
+          className="grid gap-3 rounded-2xl border border-border/60 bg-card/70 p-4 lg:grid-cols-[2fr_1fr_auto]"
         >
           <input type="hidden" name="orderId" value={order.id} />
           <input type="hidden" name="trackingNumber" value={order.trackingNumber} />

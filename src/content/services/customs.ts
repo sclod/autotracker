@@ -1,4 +1,5 @@
-import type { ServiceContent } from "./types";
+﻿import type { ServiceContent } from "./types";
+import { serviceTeam } from "./team";
 
 const customs: ServiceContent = {
   slug: "customs",
@@ -71,18 +72,7 @@ const customs: ServiceContent = {
         "В среднем 3–7 рабочих дней, зависит от региона и очередей.",
     },
   ],
-  team: [
-    {
-      name: "Александр Орлов",
-      role: "Куратор по оформлению",
-      phone: "+7 (900) 555-12-34",
-    },
-    {
-      name: "Екатерина Мельникова",
-      role: "Брокерский отдел",
-      phone: "+7 (900) 555-23-45",
-    },
-  ],
+  team: serviceTeam,
   cta: {
     title: "Оформим таможню без сложностей",
     description: "Оставьте заявку — расскажем шаги и подготовим расчёт.",
@@ -91,3 +81,4 @@ const customs: ServiceContent = {
 };
 
 export default customs;
+

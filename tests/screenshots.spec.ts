@@ -1,45 +1,86 @@
-import { test, type Request, type Response } from "@playwright/test";
+import { test, type Page, type Request, type Response } from "@playwright/test";
 import fs from "fs";
 import path from "path";
+import { createSessionValue, getSessionCookieName } from "../src/lib/auth";
 
 type PageEntry = {
   name: string;
-  path: string;
+  path?: string;
   requiresH1?: boolean;
   checkHeroCta?: boolean;
+  requiresAuth?: boolean;
+  resolvePath?: (page: Page) => Promise<string | null>;
 };
+
+test.setTimeout(10 * 60 * 1000);
+
+const baseURL = process.env.BASE_URL?.trim()
+  ? process.env.BASE_URL
+  : "http://127.0.0.1:3000";
+const authSecret = process.env.AUTH_SECRET ?? "change-me-please";
+process.env.AUTH_SECRET = authSecret;
 
 const viewports = [
   { name: "375x812", width: 375, height: 812 },
+  { name: "390x844", width: 390, height: 844 },
+  { name: "414x896", width: 414, height: 896 },
   { name: "768x1024", width: 768, height: 1024 },
   { name: "1024x768", width: 1024, height: 768 },
   { name: "1440x900", width: 1440, height: 900 },
+  { name: "1920x1080", width: 1920, height: 1080 },
 ];
 
 const pages: PageEntry[] = [
   { name: "home", path: "/", requiresH1: true, checkHeroCta: true },
-  { name: "track", path: "/track", requiresH1: true },
-  { name: "track-123456", path: "/track/123456", requiresH1: true },
-  { name: "catalog-usa", path: "/catalog/usa", requiresH1: true },
-  { name: "catalog-china", path: "/catalog/china", requiresH1: true },
-  { name: "catalog-eu-bmw", path: "/catalog/eu/bmw", requiresH1: true },
+  { name: "about", path: "/about", requiresH1: true },
   { name: "services", path: "/services", requiresH1: true },
   { name: "service-selection", path: "/services/selection", requiresH1: true },
+  { name: "catalog", path: "/catalog", requiresH1: true },
+  { name: "catalog-usa", path: "/catalog/usa", requiresH1: true },
+  { name: "catalog-eu", path: "/catalog/eu", requiresH1: true },
+  { name: "catalog-china", path: "/catalog/china", requiresH1: true },
+  { name: "catalog-usa-ford", path: "/catalog/usa/ford/ford-f150-2022", requiresH1: true },
+  { name: "track", path: "/track", requiresH1: true },
+  { name: "track-123456", path: "/track/123456", requiresH1: true },
   { name: "admin", path: "/admin" },
   { name: "admin-login", path: "/admin/login" },
-  { name: "admin-leads", path: "/admin/leads" },
-  { name: "admin-orders", path: "/admin/orders" },
+  { name: "admin-orders", path: "/admin/orders", requiresAuth: true },
+  { name: "admin-leads", path: "/admin/leads", requiresAuth: true },
+  {
+    name: "admin-order",
+    requiresAuth: true,
+    resolvePath: async (page) => {
+      await page.goto("/admin/orders", { waitUntil: "domcontentloaded" });
+      const orderHref = await page.evaluate(() => {
+        const links = Array.from(
+          document.querySelectorAll<HTMLAnchorElement>('a[href^="/admin/orders/"]')
+        );
+        const target = links.find((link) => {
+          const href = link.getAttribute("href") ?? "";
+          return href && !href.endsWith("/new");
+        });
+        return target?.getAttribute("href") ?? null;
+      });
+      return orderHref;
+    },
+  },
 ];
-
-const orderId = process.env.SHOTS_ORDER_ID;
-if (orderId) {
-  pages.push({ name: "admin-order", path: `/admin/orders/${orderId}` });
-}
 
 function ensureDir(dir: string) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
+}
+
+async function ensureAdminSession(page: Page) {
+  const cookieValue = createSessionValue();
+  await page.context().addCookies([
+    {
+      name: getSessionCookieName(),
+      value: cookieValue,
+      url: baseURL,
+    },
+  ]);
 }
 
 test("screenshots", async ({ page }) => {
@@ -57,6 +98,8 @@ test("screenshots", async ({ page }) => {
 
   for (const viewport of viewports) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await page.context().clearCookies();
+    let authed = false;
 
     for (const entry of pages) {
       const imageFailures = new Set<string>();
@@ -83,7 +126,23 @@ test("screenshots", async ({ page }) => {
       page.on("response", onResponse);
       page.on("requestfailed", onRequestFailed);
 
-      await page.goto(entry.path, { waitUntil: "networkidle" });
+      if (entry.requiresAuth && !authed) {
+        await ensureAdminSession(page);
+        authed = true;
+      }
+
+      let targetPath = entry.path ?? null;
+      if (entry.resolvePath) {
+        targetPath = await entry.resolvePath(page);
+      }
+      if (!targetPath) {
+        page.off("response", onResponse);
+        page.off("requestfailed", onRequestFailed);
+        continue;
+      }
+
+      await page.goto(targetPath, { waitUntil: "domcontentloaded" });
+      await page.waitForTimeout(200);
 
       await page.addStyleTag({
         content: `

@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <rect width="96" height="96" rx="48" fill="#11151c" stroke="#2b3444" />
-  <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="#d0d6e0" font-family="Arial" font-size="20" font-weight="600">KIA</text>
+  <rect width="96" height="96" rx="22" fill="#0f141c" stroke="#2b3444" />
+  <rect x="18" y="28" width="60" height="24" rx="12" fill="none" stroke="#e7ecf4" stroke-width="2" />
+  <text x="48" y="44" text-anchor="middle" fill="#e7ecf4" font-family="Arial" font-size="12" font-weight="700" letter-spacing="2">KIA</text>
+  <text x="48" y="70" text-anchor="middle" fill="#e7ecf4" font-family="Arial" font-size="10" font-weight="600" letter-spacing="1">MOTORS</text>
 </svg>

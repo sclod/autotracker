@@ -1,14 +1,26 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { LeadForm } from "@/components/lead-form";
+import { ModelsCarousel } from "@/components/models/models-carousel";
+import { RegionMap } from "@/components/services/region-map";
+import { WhyImport } from "@/components/services/why-import";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
+import { regionsByKey, type RegionKey } from "@/content/regions";
 import { services, servicesBySlug } from "@/content/services";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+
+const regionKeys = ["usa", "eu", "china"] as const;
+const teamImages = [
+  "/experts/2.webp",
+  "/experts/14.webp",
+  "/experts/1.webp",
+  "/experts/3.webp",
+];
 
 export async function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -60,6 +72,14 @@ export default async function ServiceDetailPage({
   if (!service) {
     notFound();
   }
+
+  const regionKey = regionKeys.includes(slug as RegionKey)
+    ? (slug as RegionKey)
+    : "eu";
+  const region = regionsByKey[regionKey];
+  const modelsTitle = regionKeys.includes(slug as RegionKey)
+    ? `Популярные модели из ${region.titleGenitive}`
+    : "Популярные модели";
 
   return (
     <>
@@ -146,6 +166,10 @@ export default async function ServiceDetailPage({
         </div>
       </section>
 
+      <RegionMap initialRegion={regionKey} />
+      <WhyImport />
+      <ModelsCarousel title={modelsTitle} models={region.models} />
+
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
           <div className="text-xs uppercase tracking-[0.4em] text-muted">FAQ</div>
@@ -172,21 +196,31 @@ export default async function ServiceDetailPage({
           <h2 className="text-3xl font-semibold">Команда и контакты</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {service.team.map((member) => (
+          {service.team.map((member, index) => (
             <Card key={member.name} className="bg-card/80">
               <CardContent className="space-y-4 p-6">
-                <Image
-                  src="/placeholders/person.svg"
-                  alt={member.name}
-                  width={320}
-                  height={320}
-                  className="h-40 w-full rounded-2xl object-cover"
-                />
-                <div>
-                  <div className="text-base font-semibold">{member.name}</div>
-                  <div className="text-sm text-muted">{member.role}</div>
+                <div className="relative mx-auto h-40 w-40 md:h-48 md:w-48">
+                  <div className="absolute inset-0 rounded-full bg-accent/90 shadow-[0_18px_36px_rgba(255,230,0,0.28)]" />
+                  <Image
+                    src={teamImages[index % teamImages.length]}
+                    alt={member.name}
+                    fill
+                    quality={100}
+                    sizes="(max-width: 768px) 160px, 192px"
+                    className="relative z-10 rounded-full object-cover ring-4 ring-background/90"
+                  />
                 </div>
-                <div className="text-sm text-muted">{member.phone}</div>
+                <div>
+                  <div className="text-base font-semibold text-center">
+                    {member.name}
+                  </div>
+                  <div className="text-sm text-muted text-center">
+                    {member.role}
+                  </div>
+                </div>
+                <div className="text-sm text-muted text-center">
+                  {member.phone}
+                </div>
               </CardContent>
             </Card>
           ))}

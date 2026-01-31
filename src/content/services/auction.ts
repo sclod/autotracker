@@ -1,4 +1,5 @@
-import type { ServiceContent } from "./types";
+﻿import type { ServiceContent } from "./types";
+import { serviceTeam } from "./team";
 
 const auction: ServiceContent = {
   slug: "auction",
@@ -71,18 +72,7 @@ const auction: ServiceContent = {
         "Все условия и ставки фиксируются в договоре до выкупа.",
     },
   ],
-  team: [
-    {
-      name: "Наталья Соколова",
-      role: "Менеджер по выкупу",
-      phone: "+7 (900) 555-45-67",
-    },
-    {
-      name: "Илья Белов",
-      role: "Аукционный отдел",
-      phone: "+7 (900) 555-34-56",
-    },
-  ],
+  team: serviceTeam,
   cta: {
     title: "Готовы участвовать в торгах?",
     description: "Подготовим стратегию и просчитаем бюджет.",
@@ -91,3 +81,4 @@ const auction: ServiceContent = {
 };
 
 export default auction;
+

@@ -13,7 +13,6 @@ const footerLinks = [
     items: [
       { href: "/about", label: "О нас" },
       { href: "/reviews", label: "Отзывы" },
-      { href: "/blog", label: "Полезное" },
     ],
   },
   {

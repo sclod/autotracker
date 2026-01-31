@@ -104,7 +104,7 @@ export function OrderStagesEditor({
       <div className="text-xs uppercase tracking-[0.2em] text-muted">
         Перетащите этапы, чтобы изменить порядок.
       </div>
-      <div className="hidden gap-3 text-xs uppercase tracking-[0.2em] text-muted md:grid md:grid-cols-[2fr_1fr_1fr_2fr_auto]">
+      <div className="hidden gap-3 text-xs uppercase tracking-[0.2em] text-muted lg:grid lg:grid-cols-[2fr_1fr_1fr_2fr_auto]">
         <div>Этап</div>
         <div>Статус</div>
         <div>Дата</div>
@@ -123,7 +123,7 @@ export function OrderStagesEditor({
         >
           <form
             action={updateStageAction}
-            className="grid items-center gap-3 md:grid-cols-[2fr_1fr_1fr_2fr_auto]"
+            className="grid items-center gap-3 lg:grid-cols-[2fr_1fr_1fr_2fr_auto]"
           >
             <input type="hidden" name="stageId" value={stage.id} />
             <input type="hidden" name="orderId" value={orderId} />

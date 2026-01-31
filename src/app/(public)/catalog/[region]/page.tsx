@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { CatalogRegionShowcase } from "@/components/catalog/region-showcase";
 import { cars } from "@/data/cars";
@@ -23,6 +23,12 @@ const REGION_TITLES: Record<RegionKey, string> = {
 
 const REGION_SUBTITLE =
   "Подбор • проверка • доставка • прозрачные этапы в трекере";
+
+const REGION_FLAGS: Record<RegionKey, string> = {
+  usa: "🇺🇸",
+  eu: "🇪🇺",
+  china: "🇨🇳",
+};
 
 function resolveRegion(value: string): RegionKey | null {
   if (value === "usa" || value === "eu" || value === "china") {
@@ -78,13 +84,14 @@ export default async function CatalogRegionPage({
 
   const regionLabel = REGION_LABELS[resolved];
   const regionFromLabel = REGION_FROM_LABELS[resolved];
-  const regionCars = cars.filter((car) => car.region === resolved).slice(0, 10);
+  const regionCars = cars.filter((car) => car.region === resolved).slice(0, 6);
 
   return (
     <CatalogRegionShowcase
       regionKey={resolved}
       regionLabel={regionLabel}
       regionFromLabel={regionFromLabel}
+      regionFlag={REGION_FLAGS[resolved]}
       cars={regionCars}
       title={REGION_TITLES[resolved]}
       subtitle={REGION_SUBTITLE}

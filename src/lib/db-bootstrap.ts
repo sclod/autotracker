@@ -1,4 +1,9 @@
-export function ensureSchema(db: any) {
+type SQLiteDb = {
+  exec: (sql: string) => unknown;
+  prepare: (sql: string) => { all: () => Array<{ name: string }> };
+};
+
+export function ensureSchema(db: SQLiteDb) {
   db.exec(`
     PRAGMA foreign_keys = ON;
 

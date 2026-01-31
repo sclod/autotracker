@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <rect width="96" height="96" rx="48" fill="#11151c" stroke="#2b3444" />
-  <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="#d0d6e0" font-family="Arial" font-size="22" font-weight="600">HY</text>
+  <rect width="96" height="96" rx="22" fill="#0f141c" stroke="#2b3444" />
+  <ellipse cx="48" cy="36" rx="26" ry="10" fill="none" stroke="#e7ecf4" stroke-width="2" />
+  <path d="M32 36c6-6 26-6 32 0" stroke="#e7ecf4" stroke-width="2" fill="none" stroke-linecap="round" />
+  <text x="48" y="66" text-anchor="middle" fill="#e7ecf4" font-family="Arial" font-size="10" font-weight="700" letter-spacing="1">HYUNDAI</text>
 </svg>

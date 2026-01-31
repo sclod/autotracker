@@ -14,8 +14,8 @@ const statusStyles: Record<Car["status"], string> = {
 
 const regionStyles: Record<Car["region"], string> = {
   eu: "border-sky-400/40 bg-sky-400/10 text-sky-100",
-  cn: "border-red-400/40 bg-red-400/10 text-red-100",
-  kr: "border-indigo-400/40 bg-indigo-400/10 text-indigo-100",
+  china: "border-red-400/40 bg-red-400/10 text-red-100",
+  usa: "border-blue-400/40 bg-blue-400/10 text-blue-100",
 };
 
 export function CarCard({ car }: { car: Car }) {

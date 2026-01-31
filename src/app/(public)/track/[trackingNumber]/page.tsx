@@ -76,6 +76,7 @@ export default async function TrackResultPage({
 
   return (
     <section className="container mx-auto px-6 py-10">
+      <h1 className="sr-only">Трекинг заказа {order.trackingNumber}</h1>
       <TrackingView
         summary={{
           trackingNumber: order.trackingNumber,

@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <rect width="96" height="96" rx="48" fill="#11151c" stroke="#2b3444" />
-  <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="#d0d6e0" font-family="Arial" font-size="20" font-weight="600">GN</text>
+  <rect width="96" height="96" rx="22" fill="#0f141c" stroke="#2b3444" />
+  <path d="M14 34c10-8 24-12 34-12s24 4 34 12" stroke="#e7ecf4" stroke-width="2" fill="none" />
+  <path d="M14 42c10 8 24 12 34 12s24-4 34-12" stroke="#e7ecf4" stroke-width="2" fill="none" />
+  <text x="48" y="68" text-anchor="middle" fill="#e7ecf4" font-family="Arial" font-size="10" font-weight="700" letter-spacing="1">GENESIS</text>
 </svg>

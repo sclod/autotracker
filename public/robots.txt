@@ -1,4 +1,4 @@
 ﻿User-agent: *
 Allow: /
 
-Sitemap: https://autotracker.ru/sitemap.xml
+Sitemap: https://mskmkad-auto.ru/sitemap.xml

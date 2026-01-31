@@ -5,7 +5,6 @@ import { ensureSchema } from "@/lib/db-bootstrap";
 import { seedDemoOrders } from "@/lib/seed";
 
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
-
 function createPrismaClient() {
   const databaseUrl = process.env.DATABASE_URL ?? "file:./dev.db";
   if (!process.env.DATABASE_URL) {
