@@ -1,23 +1,25 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MakesSection } from "@/components/home/makes-section";
 import { HeroVideo } from "@/components/home/hero-video";
+import { PopularModelsSection } from "@/components/catalog/popular-models-section";
 import { LeadForm } from "@/components/lead-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { stats } from "@/lib/placeholder-data";
 import { deliverySteps, managers, reasons } from "@/data/home";
+import { popularCars } from "@/data/cars";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Авто из США, Европы и Китая — AutoTracker",
+  title: "Импорт автомобилей под ключ — AutoTracker",
   description:
     "Подбор, проверка и доставка автомобилей под ключ. Прозрачные этапы, трекинг заказа, сопровождение на каждом шаге.",
   alternates: { canonical: siteConfig.url },
   openGraph: {
-    title: "Авто из США, Европы и Китая — AutoTracker",
+    title: "Импорт автомобилей под ключ — AutoTracker",
     description:
       "Подбор, проверка и доставка автомобилей под ключ. Прозрачные этапы, трекинг заказа, сопровождение на каждом шаге.",
     url: siteConfig.url,
@@ -63,10 +65,10 @@ export default function HomePage() {
                   Получить консультацию
                 </Link>
                 <Link
-                  href="/catalog/usa"
+                  href="/track"
                   className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
                 >
-                  Каталог и марки
+                  Отследить заказ
                 </Link>
               </div>
             </div>
@@ -117,6 +119,14 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <PopularModelsSection
+        cars={popularCars}
+        title="Популярные модели, которые можно привезти"
+        subtitle="Подбор • проверка • доставка • прозрачные этапы в трекере"
+        source="home-popular"
+        showLead
+      />
 
       <MakesSection />
 

@@ -120,7 +120,7 @@ export const processStages = [
 ];
 
 export const stats = [
-  { label: "Средний срок доставки", value: "38 дней" },
-  { label: "Авто в пути прямо сейчас", value: "124" },
-  { label: "Партнёрских складов", value: "16" },
+  { label: "Средний срок доставки", value: "57 дней" },
+  { label: "Авто доставлено", value: "1000+" },
+  { label: "Авто в пути", value: "71" },
 ];

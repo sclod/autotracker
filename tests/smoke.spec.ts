@@ -1,10 +1,8 @@
-﻿import { test, expect, type Page } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 
 const trackingNumber = process.env.SMOKE_TRACKING_NUMBER ?? "123456";
 const accessCode = process.env.SMOKE_ACCESS_CODE ?? "111111";
 const adminPassword = process.env.ADMIN_PASSWORD ?? "change-me";
-
-const sampleCarId = "bmw-x5-2022";
 
 async function loginAdmin(page: Page) {
   await page.goto("/admin/login");
@@ -16,41 +14,14 @@ async function loginAdmin(page: Page) {
 test("home loads", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("video")).toBeVisible();
-  await expect(page.locator('a[href="/catalog/usa"]').first()).toBeVisible();
+  await expect(page.locator('a[href="/track"]').first()).toBeVisible();
 });
 
-test("catalog pages render", async ({ page }) => {
-  await page.goto("/catalog/usa");
-  await expect(page.locator("h1")).toBeVisible();
-
-  await page.goto("/catalog/eu/bmw");
-  await expect(page.locator("h1")).toBeVisible();
-  await expect(page.locator('a[href^="/catalog/eu/bmw/"]').first()).toBeVisible();
-});
-
-test("catalog CTA prefill", async ({ page }) => {
-  await page.goto("/catalog/usa");
+test("top cars CTA prefill", async ({ page }) => {
+  await page.goto("/");
   await page.getByRole("button", { name: "Хочу такой автомобиль" }).first().click();
   const message = page.locator('textarea[name="message"]').first();
   await expect(message).toHaveValue(/Хочу/);
-  await expect(message).toHaveValue(/США/);
-});
-
-test("catalog redirects", async ({ page }) => {
-  await page.goto("/catalog/cn");
-  await expect(page).toHaveURL(/\/catalog\/china/);
-
-  await page.goto("/catalog/kr");
-  await expect(page).toHaveURL(/\/catalog\/usa/);
-
-  await page.goto("/catalog/korea");
-  await expect(page).toHaveURL(/\/catalog\/usa/);
-});
-
-test("catalog detail page renders", async ({ page }) => {
-  await page.goto(`/catalog/eu/bmw/${sampleCarId}`);
-  await expect(page.locator("h1")).toBeVisible();
-  await expect(page.locator('textarea[name="message"]').first()).toBeVisible();
 });
 
 test("lead submission works", async ({ page }) => {

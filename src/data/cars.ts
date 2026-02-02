@@ -367,6 +367,8 @@ export const cars: Car[] = [
   },
 ];
 
+export const popularCars = cars.filter((car) => car.region === "usa").slice(0, 6);
+
 export const carStatusLabels: Record<CarStatus, string> = {
   available: "В наличии",
   in_transit: "В пути",

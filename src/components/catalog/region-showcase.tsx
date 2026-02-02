@@ -17,21 +17,29 @@ export function CatalogRegionShowcase({
   crumbs,
   title,
   subtitle,
+  showFlags = true,
+  showLead = true,
 }: {
   regionKey: string;
-  regionLabel: string;
-  regionFromLabel: string;
+  regionLabel?: string;
+  regionFromLabel?: string;
   regionFlag?: string;
   cars: Car[];
   crumbs?: Crumb[];
   title?: string;
   subtitle?: string;
+  showFlags?: boolean;
+  showLead?: boolean;
 }) {
   const [message, setMessage] = useState("");
   const leadRef = useRef<HTMLDivElement>(null);
 
   const handlePick = (car: Car) => {
-    setMessage(`Хочу ${car.name} из ${regionLabel}, свяжитесь со мной`);
+    setMessage(
+      regionLabel
+        ? `Хочу ${car.name} из ${regionLabel}, свяжитесь со мной`
+        : `Хочу ${car.name}, свяжитесь со мной`
+    );
     requestAnimationFrame(() => {
       leadRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -50,9 +58,9 @@ export function CatalogRegionShowcase({
           <div className="text-xs uppercase tracking-[0.4em] text-muted">Каталог</div>
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-4xl font-semibold">
-              {title ?? `Популярные модели из ${regionFromLabel}`}
+              {title ?? `Популярные модели из ${regionFromLabel ?? ""}`}
             </h1>
-            {regionFlag && (
+            {showFlags && regionFlag && (
               <span className="rounded-md border border-white/10 bg-white/10 px-2 py-1 text-xl">
                 {regionFlag}
               </span>
@@ -66,35 +74,44 @@ export function CatalogRegionShowcase({
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cars.map((car) => (
-            <CatalogCard key={car.id} car={car} onPick={handlePick} />
+            <CatalogCard
+              key={car.id}
+              car={car}
+              onPick={handlePick}
+              showFlag={showFlags}
+            />
           ))}
         </div>
 
-        <div ref={leadRef} className="mt-10">
-          <LeadForm
-            key={message}
-            source={`catalog-${regionKey}`}
-            title="Получить консультацию"
-            description="Оставьте заявку — подберем авто и рассчитаем стоимость доставки."
-            buttonLabel="Отправить запрос"
-            className="border-border/60 bg-card/80"
-            variant="compact"
-            sideImageSrc="/about_picta.png"
-            sideImageAlt="Консультация"
-            defaultValues={{ message }}
-          />
-        </div>
+        {showLead && (
+          <div ref={leadRef} className="mt-10">
+            <LeadForm
+              key={message}
+              source={`catalog-${regionKey}`}
+              title="Получить консультацию"
+              description="Оставьте заявку — подберем авто и рассчитаем стоимость доставки."
+              buttonLabel="Отправить запрос"
+              className="border-border/60 bg-card/80"
+              variant="compact"
+              sideImageSrc="/about_picta.png"
+              sideImageAlt="Консультация"
+              defaultValues={{ message }}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
-function CatalogCard({
+export function CatalogCard({
   car,
   onPick,
+  showFlag = true,
 }: {
   car: Car;
   onPick: (car: Car) => void;
+  showFlag?: boolean;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState<number | null>(null);
@@ -170,9 +187,11 @@ function CatalogCard({
           <div className="text-lg font-semibold text-white md:text-xl">
             {car.name}
           </div>
-          <span className="rounded-md border border-white/10 bg-white/10 px-2 py-1 text-base">
-            {car.flag}
-          </span>
+          {showFlag && car.flag && (
+            <span className="rounded-md border border-white/10 bg-white/10 px-2 py-1 text-base">
+              {car.flag}
+            </span>
+          )}
         </div>
         <div className="text-sm text-white/60">{car.specLine}</div>
         <div className="text-2xl font-semibold text-white">

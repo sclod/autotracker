@@ -32,14 +32,8 @@ const viewports = [
 
 const pages: PageEntry[] = [
   { name: "home", path: "/", requiresH1: true, checkHeroCta: true },
-  { name: "about", path: "/about", requiresH1: true },
   { name: "services", path: "/services", requiresH1: true },
   { name: "service-selection", path: "/services/selection", requiresH1: true },
-  { name: "catalog", path: "/catalog", requiresH1: true },
-  { name: "catalog-usa", path: "/catalog/usa", requiresH1: true },
-  { name: "catalog-eu", path: "/catalog/eu", requiresH1: true },
-  { name: "catalog-china", path: "/catalog/china", requiresH1: true },
-  { name: "catalog-usa-ford", path: "/catalog/usa/ford/ford-f150-2022", requiresH1: true },
   { name: "track", path: "/track", requiresH1: true },
   { name: "track-123456", path: "/track/123456", requiresH1: true },
   { name: "admin", path: "/admin" },
@@ -175,8 +169,7 @@ test("screenshots", async ({ page }) => {
           if (checkHeroCta) {
             const cta =
               document.querySelector('main a[href="/contact"]') ||
-              document.querySelector('main a[href="/catalog/usa"]') ||
-              document.querySelector('main a[href="/catalog"]');
+              document.querySelector('main a[href="/track"]');
             if (!cta) {
               result.heroCtaVisible = false;
             } else {

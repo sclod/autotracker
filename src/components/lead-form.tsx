@@ -90,18 +90,18 @@ export function LeadForm({
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <Link
-                  href="/catalog/usa"
+                  href="/"
                   className={cn(
                     buttonVariants({ variant: "outline", size: "sm" })
                   )}
                 >
-                  Каталог
+                  На главную
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/track"
                   className={cn(buttonVariants({ variant: "accent", size: "sm" }))}
                 >
-                  Контакты
+                  Трекинг
                 </Link>
               </div>
               <div className="mt-2 text-xs text-emerald-100/80">
@@ -139,9 +139,7 @@ export function LeadForm({
               <p className="text-sm text-amber-200">{state.message}</p>
             )}
             {!state.ok && (
-              <div className="text-xs text-muted">
-                Если нужно срочно: {phone}
-              </div>
+              <div className="text-xs text-muted">Если нужно срочно: {phone}</div>
             )}
           </form>
         </div>

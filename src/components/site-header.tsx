@@ -1,29 +1,46 @@
-﻿import Link from "next/link";
+"use client";
+
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { siteConfig, sitePlaceholders, withFallback } from "@/config/site";
 
 const navItems = [
-  { href: "/about", label: "О компании" },
   { href: "/services", label: "Услуги" },
-  { href: "/reviews", label: "Отзывы" },
   { href: "/contact", label: "Контакты" },
   { href: "/track", label: "Трекер" },
 ];
 
-const catalogLinks = [
-  { href: "/catalog/usa", label: "США" },
-  { href: "/catalog/eu", label: "Европа" },
-  { href: "/catalog/china", label: "Китай" },
-];
-
 export function SiteHeader({ className }: { className?: string }) {
   const phone = withFallback(siteConfig.contacts.phone, sitePlaceholders.phone);
+  const [hidden, setHidden] = useState(false);
+  const [open, setOpen] = useState(false);
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastY.current;
+      if (y < 20) {
+        setHidden(false);
+      } else if (delta > 6 && y > 80) {
+        setHidden(true);
+        setOpen(false);
+      } else if (delta < -6) {
+        setHidden(false);
+      }
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
       className={cn(
-        "border-b border-border/60 bg-background/80 backdrop-blur",
+        "border-b border-border/60 bg-background/80 backdrop-blur transition-transform duration-200",
+        hidden ? "-translate-y-full md:translate-y-0" : "translate-y-0",
         className
       )}
     >
@@ -34,40 +51,32 @@ export function SiteHeader({ className }: { className?: string }) {
             {siteConfig.brand.name}
             <span className="text-accent">{siteConfig.brand.accent}</span>
           </Link>
-          <Link
-            href="/contact"
-            className={cn(buttonVariants({ variant: "subtle", size: "sm" }))}
-          >
-            {phone}
-          </Link>
-        </div>
-        <nav className="flex w-full flex-wrap items-center gap-3 text-sm text-muted lg:w-auto lg:justify-center">
-          <div className="group relative flex items-center">
-            <button
-              type="button"
-              className="rounded-full border border-transparent px-3 py-1 transition hover:border-border hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
-              aria-haspopup="true"
-            >
-              Каталог
-            </button>
-            <div
+          <div className="flex items-center gap-2">
+            <Link
+              href="/contact"
               className={cn(
-                "absolute left-0 top-full z-50 mt-2 w-48 rounded-2xl border border-border/60 bg-card/95 p-2 shadow-[0_16px_40px_rgba(0,0,0,0.25)] backdrop-blur",
-                "opacity-0 pointer-events-none transition group-hover:opacity-100 group-hover:pointer-events-auto",
-                "group-focus-within:opacity-100 group-focus-within:pointer-events-auto"
+                buttonVariants({ variant: "subtle", size: "sm" }),
+                "hidden sm:inline-flex"
               )}
             >
-              {catalogLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block rounded-xl px-3 py-2 text-sm text-muted transition hover:bg-white/10 hover:text-foreground"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
+              {phone}
+            </Link>
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/60 text-foreground transition hover:bg-card md:hidden"
+              aria-label="Открыть меню"
+              onClick={() => setOpen((prev) => !prev)}
+            >
+              <span className="relative block h-3 w-4">
+                <span className="absolute left-0 top-0 h-0.5 w-full bg-current" />
+                <span className="absolute left-0 top-1.5 h-0.5 w-full bg-current" />
+                <span className="absolute left-0 top-3 h-0.5 w-full bg-current" />
+              </span>
+            </button>
           </div>
+        </div>
+
+        <nav className="hidden w-full flex-wrap items-center gap-3 text-sm text-muted md:flex md:w-auto md:justify-center">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -78,7 +87,7 @@ export function SiteHeader({ className }: { className?: string }) {
             </Link>
           ))}
         </nav>
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="hidden flex-wrap items-center gap-3 md:flex">
           <Link
             href="/contact"
             className={cn(buttonVariants({ variant: "accent" }))}
@@ -87,6 +96,35 @@ export function SiteHeader({ className }: { className?: string }) {
           </Link>
         </div>
       </div>
+
+      {open && (
+        <div className="md:hidden">
+          <div className="container mx-auto px-6 pb-4">
+            <div className="rounded-2xl border border-border/60 bg-card/90 p-4 shadow-[0_12px_40px_rgba(0,0,0,0.25)]">
+              <div className="flex flex-col gap-3">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="rounded-xl px-3 py-2 text-sm text-foreground hover:bg-white/10"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className={cn(buttonVariants({ variant: "accent" }), "w-full")}
+                >
+                  Получить подбор
+                </Link>
+                <div className="text-xs text-muted">{phone}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

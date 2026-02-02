@@ -54,3 +54,25 @@ export const MAKES: Record<RegionKey, Make[]> = {
     { title: "BMW", slug: "bmw", image: "/makes/bmw.svg" },
   ],
 };
+
+export const FLAT_MAKES: Make[] = [
+  { title: "BMW", slug: "bmw", image: "/makes/bmw.svg" },
+  { title: "Mercedes-Benz", slug: "mercedes_benz", image: "/makes/mercedes_benz.png" },
+  { title: "Audi", slug: "audi", image: "/makes/audi.png" },
+  { title: "Volkswagen", slug: "volkswagen", image: "/makes/volkswagen.png" },
+  { title: "Porsche", slug: "porsche", image: "/makes/porsche.png" },
+  { title: "Tesla", slug: "tesla", image: "/makes/tesla.png" },
+  { title: "Lamborghini", slug: "lamborghini", image: "/makes/lamborghini.png" },
+  { title: "Ferrari", slug: "ferrari", image: "/makes/ferrari.png" },
+  { title: "Land Rover", slug: "land_rover", image: "/makes/land_rover.png" },
+  { title: "Volvo", slug: "volvo", image: "/makes/volvo.png" },
+  { title: "Hyundai", slug: "hyundai", image: "/makes/hyundai.svg" },
+  { title: "Kia", slug: "kia", image: "/makes/kia.svg" },
+  { title: "Genesis", slug: "genesis", image: "/makes/genesis.svg" },
+  { title: "SsangYong", slug: "ssangyong", image: "/makes/ssangyong.svg" },
+  { title: "Geely", slug: "geely", image: "/makes/geely.svg" },
+  { title: "Zeekr", slug: "zeekr", image: "/makes/zeekr.png" },
+  { title: "Li Auto", slug: "li_auto", image: "/makes/lixiang.svg" },
+  { title: "Xpeng", slug: "xpeng", image: "/makes/xpeng.png" },
+  { title: "Seres", slug: "seres", image: "/makes/seres.png" },
+];

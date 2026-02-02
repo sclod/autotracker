@@ -9,22 +9,15 @@ const serviceLinks = services.map((service) => ({
 
 const footerLinks = [
   {
-    title: "О компании",
-    items: [
-      { href: "/about", label: "О нас" },
-      { href: "/reviews", label: "Отзывы" },
-    ],
-  },
-  {
     title: "Услуги",
     items: serviceLinks,
   },
   {
-    title: "Каталог",
+    title: "Навигация",
     items: [
-      { href: "/catalog/usa", label: "США" },
-      { href: "/catalog/eu", label: "Европа" },
-      { href: "/catalog/china", label: "Китай" },
+      { href: "/", label: "Главная" },
+      { href: "/track", label: "Трекинг" },
+      { href: "/contact", label: "Контакты" },
     ],
   },
 ];
@@ -40,14 +33,14 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-border/60 bg-card-muted">
-      <div className="container mx-auto grid gap-8 px-6 py-12 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+      <div className="container mx-auto grid gap-8 px-6 py-12 lg:grid-cols-[2fr_1fr_1fr]">
         <div className="space-y-4">
           <div className="text-lg font-semibold tracking-[0.2em]">
             {siteConfig.brand.name}
             <span className="text-accent">{siteConfig.brand.accent}</span>
           </div>
           <p className="text-sm text-muted">
-            Доставка автомобилей из США, Европы и Китая. Прозрачный трекер,
+            Доставка автомобилей из США, Европы, Китая и Кореи. Прозрачный трекер,
             фиксируем условия и сроки.
           </p>
           <div className="text-sm text-muted">

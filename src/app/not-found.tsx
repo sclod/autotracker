@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
@@ -26,21 +26,15 @@ export default function NotFound() {
                   Страница не найдена
                 </h1>
                 <p className="text-muted">
-                  Проверьте ссылку или вернитесь в каталог, на главную или в трекер.
+                  Проверьте ссылку или вернитесь на главную либо в трекер.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Link href="/" className={cn(buttonVariants({ variant: "accent" }))}>
                     На главную
                   </Link>
                   <Link
-                    href="/catalog/usa"
-                    className={cn(buttonVariants({ variant: "outline" }))}
-                  >
-                    Каталог
-                  </Link>
-                  <Link
                     href="/track"
-                    className={cn(buttonVariants({ variant: "ghost" }))}
+                    className={cn(buttonVariants({ variant: "outline" }))}
                   >
                     Трекинг
                   </Link>
@@ -55,9 +49,12 @@ export default function NotFound() {
                     placeholder="Введите номер заказа"
                     className="h-11"
                   />
-                  <Button variant="outline" type="submit" className="h-11">
+                  <button
+                    type="submit"
+                    className={cn(buttonVariants({ variant: "outline" }), "h-11")}
+                  >
                     Проверить
-                  </Button>
+                  </button>
                 </form>
               </div>
 

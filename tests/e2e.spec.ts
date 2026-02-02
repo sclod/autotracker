@@ -16,14 +16,11 @@ test("home lead flow", async ({ page }) => {
   await expect(page.locator('[class*="border-emerald-400"]').first()).toBeVisible();
 });
 
-test("catalog detail lead prefill", async ({ page }) => {
-  await page.goto("/catalog/eu/bmw/bmw-x5-2022");
-  const carTitle = (await page.locator("h1").first().textContent()) ?? "";
+test("home top cars lead prefill", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Хочу такой автомобиль" }).first().click();
   const message = await page.locator('textarea[name="message"]').inputValue();
-  expect(message.length).toBeGreaterThan(10);
-  if (carTitle.trim()) {
-    expect(message).toContain(carTitle.trim().split(" ")[0]);
-  }
+  expect(message.length).toBeGreaterThan(6);
   await expect(page.locator("img").first()).toBeVisible();
 });
 
@@ -79,7 +76,7 @@ test("chat burst does not lock DB", async ({ request }) => {
 
 test("lead convert flow", async ({ page }) => {
   await page.goto("/");
-  await page.locator('input[name="name"]').first().fill("Лид Для Конвертации");
+  await page.locator('input[name="name"]').first().fill("Лид для конвертации");
   await page.locator('input[name="phone"]').first().fill("+7 (999) 333-44-55");
   await page.locator('form button[type="submit"]').first().click();
   await expect(page.locator('[class*="border-emerald-400"]').first()).toBeVisible();

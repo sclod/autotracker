@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import { carStatusLabels, type Car } from "@/data/cars";
-import { REGION_LABELS } from "@/data/makes";
 import { formatMileage, formatPrice } from "@/lib/catalog";
 import { cn } from "@/lib/utils";
 
@@ -12,11 +11,6 @@ const statusStyles: Record<Car["status"], string> = {
   in_transit: "border-amber-400/40 bg-amber-400/10 text-amber-200",
 };
 
-const regionStyles: Record<Car["region"], string> = {
-  eu: "border-sky-400/40 bg-sky-400/10 text-sky-100",
-  china: "border-red-400/40 bg-red-400/10 text-red-100",
-  usa: "border-blue-400/40 bg-blue-400/10 text-blue-100",
-};
 
 export function CarCard({ car }: { car: Car }) {
   const preview = car.images[0] ?? "/placeholders/media.svg";
@@ -42,14 +36,6 @@ export function CarCard({ car }: { car: Car }) {
             >
               {carStatusLabels[car.status]}
             </span>
-            <span
-              className={cn(
-                "rounded-full border px-3 py-1 text-[11px] font-semibold",
-                regionStyles[car.region]
-              )}
-            >
-              {REGION_LABELS[car.region]}
-            </span>
           </div>
         </div>
         <div className="space-y-2">
@@ -65,16 +51,16 @@ export function CarCard({ car }: { car: Car }) {
         </div>
         <div className="flex flex-wrap gap-2">
           <Link
-            href={`/catalog/${car.region}/${car.makeSlug}/${car.id}`}
+            href="/contact"
             className={cn(buttonVariants({ variant: "subtle", size: "sm" }))}
           >
             Подробнее
           </Link>
           <Link
-            href={`/catalog/${car.region}/${car.makeSlug}/${car.id}#lead`}
+            href="/track"
             className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
           >
-            Запросить подбор
+            Трекинг
           </Link>
         </div>
       </CardContent>
