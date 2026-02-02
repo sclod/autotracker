@@ -27,11 +27,17 @@ export function HeroVideo({ className }: HeroVideoProps) {
 
   return (
     <video
-      className={cn("pointer-events-none absolute inset-0 h-full w-full object-cover", className)}
+      className={cn(
+        "pointer-events-none absolute inset-0 h-full w-full object-cover object-[50%_35%] max-md:object-[50%_0%]",
+        className
+      )}
       autoPlay={allowMotion}
       muted
       loop={allowMotion}
       playsInline
+      controls={false}
+      disablePictureInPicture
+      controlsList="nodownload noplaybackrate noremoteplayback"
       preload="metadata"
       poster="/placeholders/hero.jpg"
       aria-hidden="true"

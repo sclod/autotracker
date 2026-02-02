@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MakesSection } from "@/components/home/makes-section";
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og.jpg",
+        url: "/og/og-cover-v2.jpg",
         width: 1200,
         height: 630,
         alt: "AutoTracker — импорт автомобилей",
@@ -38,161 +38,84 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <section className="relative isolate min-h-[70vh] overflow-hidden md:min-h-screen -mt-[var(--header-h)] pt-[var(--header-h)]">
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <HeroVideo />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07090d] via-[#07090d]/80 to-transparent" />
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-        <div className="relative z-10 container mx-auto px-6 py-24">
-          <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-            <div className="max-w-3xl space-y-6">
-              <div className="text-xs uppercase tracking-[0.4em] text-muted">
-                Импорт авто под ключ
+      <section className="relative isolate h-auto overflow-hidden md:min-h-screen -mt-[var(--header-h)]">
+        <div className="relative overflow-hidden lg:pb-[100px]">
+          <div className="pointer-events-none absolute inset-0 z-0">
+            <HeroVideo />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#07090d] via-[#07090d]/80 to-transparent" />
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
+          <div className="relative z-10 container mx-auto px-6 pt-[var(--header-h)] pb-0 md:pt-24 md:pb-24">
+            <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+              <div className="max-w-3xl space-y-6">
+                <div className="text-xs uppercase tracking-[0.4em] text-muted">Импорт авто под ключ</div>
+                <h1 className="text-4xl font-semibold leading-tight md:text-6xl">Привезём автомобиль под ваш бюджет и сроки</h1>
+                <p className="text-lg text-muted md:text-xl">Подбор на аукционах и у дилеров, проверка и прозрачная логистика. От договора до выдачи — в одном трекере.</p>
+                <div className="flex flex-wrap gap-4 pb-[25px]">
+                  <Link
+                    href="/contact"
+                    className={cn(buttonVariants({ variant: "accent", size: "lg" }))}
+                  >Получить консультацию</Link>
+                </div>
               </div>
-              <h1 className="text-4xl font-semibold leading-tight md:text-6xl">
-                Привезём автомобиль под ваш бюджет и сроки
-              </h1>
-              <p className="text-lg text-muted md:text-xl">
-                Подбор на аукционах и у дилеров, проверка и прозрачная логистика.
-                От договора до выдачи — в одном трекере.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className={cn(buttonVariants({ variant: "accent", size: "lg" }))}
-                >
-                  Получить консультацию
-                </Link>
-                <Link
-                  href="/track"
-                  className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
-                >
-                  Отследить заказ
-                </Link>
+              <div className="max-md:hidden">
+                <LeadForm
+                  source="hero"
+                  title="Оставьте заявку"
+                  description="Подберём авто и рассчитаем стоимость под ваш бюджет."
+                  buttonLabel="Отправить заявку"
+                  className="backdrop-blur"
+                />
               </div>
             </div>
-            <div className="max-[375px]:hidden">
+          </div>
+          <div className="relative z-10 container mx-auto px-6">
+            <div className="mt-10 md:mt-16 grid gap-4 md:grid-cols-3 max-md:hidden">
+              {stats.map((stat) => (
+                <Card key={stat.label} className="bg-card/70">
+                  <CardHeader>
+                    <CardTitle className="text-3xl text-foreground">
+                      {stat.value}
+                    </CardTitle>
+                    <p className="text-sm text-muted">{stat.label}</p>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+          <div className="relative z-10 container mx-auto px-6 md:hidden">
+            <div className="space-y-6 pb-6">
               <LeadForm
-                source="hero"
+                source="hero-mobile"
                 title="Оставьте заявку"
                 description="Подберём авто и рассчитаем стоимость под ваш бюджет."
                 buttonLabel="Отправить заявку"
-                className="backdrop-blur"
               />
+              <div className="grid gap-4">
+                {stats.map((stat) => (
+                  <Card key={stat.label} className="bg-card/70">
+                    <CardHeader>
+                      <CardTitle className="text-3xl text-foreground">
+                        {stat.value}
+                      </CardTitle>
+                      <p className="text-sm text-muted">{stat.label}</p>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="mt-16 grid gap-4 md:grid-cols-3 max-[375px]:hidden">
-            {stats.map((stat) => (
-              <Card key={stat.label} className="bg-card/70">
-                <CardHeader>
-                  <CardTitle className="text-3xl text-foreground">
-                    {stat.value}
-                  </CardTitle>
-                  <p className="text-sm text-muted">{stat.label}</p>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
         </div>
-      </section>
 
-      <section className="container mx-auto hidden px-6 max-[375px]:block">
-        <div className="space-y-6">
-          <LeadForm
-            source="hero-mobile"
-            title="Оставьте заявку"
-            description="Подберём авто и рассчитаем стоимость под ваш бюджет."
-            buttonLabel="Отправить заявку"
-          />
-          <div className="grid gap-4">
-            {stats.map((stat) => (
-              <Card key={stat.label} className="bg-card/70">
-                <CardHeader>
-                  <CardTitle className="text-3xl text-foreground">
-                    {stat.value}
-                  </CardTitle>
-                  <p className="text-sm text-muted">{stat.label}</p>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+</section>
 
-      <PopularModelsSection
-        cars={popularCars}
-        title="Популярные модели, которые можно привезти"
-        subtitle="Подбор • проверка • доставка • прозрачные этапы в трекере"
-        source="home-popular"
-        showLead
-      />
-
-      <MakesSection />
-
-      <section className="container mx-auto px-6">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-2">
-            <div className="text-xs uppercase tracking-[0.4em] text-muted">Этапы</div>
-            <h2 className="text-3xl font-semibold">Как мы доставляем автомобили</h2>
-            <p className="text-muted">
-              Показываем весь путь: договор, логистика, таможня, выдача.
-            </p>
-          </div>
-          <Link href="/track" className={cn(buttonVariants({ variant: "outline" }))}>
-            Отследить заказ
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {deliverySteps.map((step, index) => (
-            <Card key={step.title} className="bg-card/80">
-              <CardContent className="space-y-3 p-5">
-                <div className="text-xs uppercase tracking-[0.2em] text-muted">
-                  Шаг {index + 1}
-                </div>
-                <div className="text-lg font-semibold">{step.title}</div>
-                <p className="text-sm text-muted">{step.text}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section className="container mx-auto px-6">
-        <div className="grid gap-8 rounded-3xl border border-border/60 bg-card-muted p-10 lg:grid-cols-[1.1fr_1fr]">
-          <div className="space-y-3">
-            <div className="text-xs uppercase tracking-[0.4em] text-muted">Гарантии</div>
-            <h2 className="text-3xl font-semibold">Почему выбирают AutoTracker</h2>
-            <p className="text-muted">
-              Фиксируем условия в договоре, работаем прозрачно и держим в курсе статуса.
-            </p>
-          </div>
-          <div className="space-y-3">
-            {reasons.map((reason) => (
-              <div
-                key={reason}
-                className="flex items-center gap-3 rounded-2xl border border-border/60 bg-card/80 px-4 py-3"
-              >
-                <span className="h-2 w-2 rounded-full bg-accent" />
-                <span className="text-sm text-foreground">{reason}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="container mx-auto px-6">
+      <section className="container mx-auto px-6 md:-mt-[100px]">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="space-y-2">
             <div className="text-xs uppercase tracking-[0.4em] text-muted">Команда</div>
-            <h2 className="text-3xl font-semibold">Менеджер всегда на связи</h2>
-            <p className="text-muted">
-              Персональный менеджер сопровождает заказ и отвечает на вопросы.
-            </p>
+            <h2 className="text-3xl font-semibold">Менеджер всегда на связи</h2><p className="text-muted">Персональный менеджер сопровождает заказ и отвечает на вопросы.</p>
           </div>
-          <Link href="/contact" className={cn(buttonVariants({ variant: "outline" }))}>
-            Связаться
-          </Link>
+          <Link href="/contact" className={cn(buttonVariants({ variant: "outline" }))}>Связаться</Link>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {managers.map((manager) => (
@@ -206,7 +129,7 @@ export default function HomePage() {
                     fill
                     quality={100}
                     sizes="(max-width: 768px) 160px, 192px"
-                    className="relative z-10 rounded-full object-cover ring-4 ring-background/90"
+                    className="relative z-10 rounded-full object-cover object-top ring-4 ring-background/90"
                   />
                 </div>
                 <div>
@@ -226,18 +149,72 @@ export default function HomePage() {
         </div>
       </section>
 
+
+      <div className="mt-0">
+        <PopularModelsSection
+          cars={popularCars}
+          title="Популярные модели, которые можно привезти"
+          subtitle="Подбор • проверка • доставка • прозрачные этапы в трекере"
+          source="home-popular"
+          showLead
+        />
+      </div>
+
+      <MakesSection />
+
+      <section className="container mx-auto px-6">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-2">
+            <div className="text-xs uppercase tracking-[0.4em] text-muted">Этапы</div>
+            <h2 className="text-3xl font-semibold">Как мы доставляем автомобили</h2><p className="text-muted">Показываем весь путь: договор, логистика, таможня, выдача.</p>
+          </div>
+          <Link href="/track" className={cn(buttonVariants({ variant: "outline" }))}>Отследить заказ</Link>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {deliverySteps.map((step, index) => (
+            <Card key={step.title} className="bg-card/80">
+              <CardContent className="space-y-3 p-5">
+                <div className="text-xs uppercase tracking-[0.2em] text-muted">Шаг {index + 1}
+                </div>
+                <div className="text-lg font-semibold">{step.title}</div>
+                <p className="text-sm text-muted">{step.text}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="container mx-auto px-6">
+        <div className="grid gap-8 rounded-3xl border border-border/60 bg-card-muted p-10 lg:grid-cols-[1.1fr_1fr]">
+          <div className="space-y-3">
+            <div className="text-xs uppercase tracking-[0.4em] text-muted">Гарантии</div>
+            <h2 className="text-3xl font-semibold">Почему выбирают AutoTracker</h2><p className="text-muted">Фиксируем условия в договоре, работаем прозрачно и держим в курсе статуса.</p>
+          </div>
+          <div className="space-y-3">
+            {reasons.map((reason) => (
+              <div
+                key={reason}
+                className="flex items-center gap-3 rounded-2xl border border-border/60 bg-card/80 px-4 py-3"
+              >
+                <span className="h-2 w-2 rounded-full bg-accent" />
+                <span className="text-sm text-foreground">{reason}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
+
       <section className="container mx-auto px-6">
         <div className="grid gap-6 rounded-3xl border border-border/60 bg-card-muted p-10 lg:grid-cols-[1.3fr_1fr]">
           <div className="space-y-4">
             <div className="text-xs uppercase tracking-[0.4em] text-muted">Заявка</div>
-            <h2 className="text-3xl font-semibold">Получите подбор за 24 часа</h2>
-            <p className="text-muted">
-              Расскажите, какой автомобиль нужен — предложим варианты и рассчитаем стоимость.
-            </p>
+            <h2 className="text-3xl font-semibold">Получите подбор за 24 часа</h2><p className="text-muted">Расскажите, какой автомобиль нужен — предложим варианты и рассчитаем стоимость.</p>
           </div>
           <LeadForm
             source="request-section"
-            title=""
+            title="Популярные модели, которые можно привезти"
             description=""
             buttonLabel="Отправить заявку"
             className="bg-transparent border-none p-0"
@@ -247,3 +224,14 @@ export default function HomePage() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+

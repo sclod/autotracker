@@ -138,9 +138,6 @@ export function LeadForm({
             {state.message && !state.ok && (
               <p className="text-sm text-amber-200">{state.message}</p>
             )}
-            {!state.ok && (
-              <div className="text-xs text-muted">Если нужно срочно: {phone}</div>
-            )}
           </form>
         </div>
 

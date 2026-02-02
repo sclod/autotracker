@@ -16,10 +16,11 @@ import { cn } from "@/lib/utils";
 
 const regionKeys = ["usa", "eu", "china"] as const;
 const teamImages = [
-  "/experts/2.webp",
-  "/experts/14.webp",
-  "/experts/1.webp",
-  "/experts/3.webp",
+  "/manager1.jpg",
+  "/manager2.jpg",
+  "/manager3.jpg",
+  "/manager4.jpg",
+  "/manager5.jpg",
 ];
 
 export async function generateStaticParams() {
@@ -51,7 +52,7 @@ export async function generateMetadata({
       url: canonical,
       images: [
         {
-          url: "/og.jpg",
+          url: "/og/og-cover-v2.jpg",
           width: 1200,
           height: 630,
           alt: `AutoTracker — ${service.title}`,

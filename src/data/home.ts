@@ -1,27 +1,33 @@
-﻿export const managers = [
+export const managers = [
   {
-    name: "Александр Орлов",
-    role: "Руководитель отдела",
+    name: "Илья Орлов",
+    role: "Менеджер по продажам",
     phone: "+7 (900) 555-12-34",
-    image: "/experts/2.webp",
+    image: "/manager1.jpg",
   },
   {
-    name: "Евгений Мельников",
-    role: "Куратор сделок",
+    name: "Тимур Шарипов",
+    role: "Менеджер по продажам",
     phone: "+7 (900) 555-23-45",
-    image: "/experts/14.webp",
+    image: "/manager2.jpg",
   },
   {
-    name: "Илья Белов",
-    role: "Специалист по логистике",
+    name: "Максим Клифов",
+    role: "Менеджер по продажам",
     phone: "+7 (900) 555-34-56",
-    image: "/experts/1.webp",
+    image: "/manager3.jpg",
   },
   {
-    name: "Никита Соколов",
-    role: "Менеджер по подбору",
+    name: "Роман Харт",
+    role: "Менеджер по продажам",
     phone: "+7 (900) 555-45-67",
-    image: "/experts/3.webp",
+    image: "/manager4.jpg",
+  },
+  {
+    name: "Ирина Волкова",
+    role: "Менеджер по продажам",
+    phone: "+7 (900) 555-56-78",
+    image: "/manager5.jpg",
   },
 ];
 

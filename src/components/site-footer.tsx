@@ -40,8 +40,7 @@ export function SiteFooter() {
             <span className="text-accent">{siteConfig.brand.accent}</span>
           </div>
           <p className="text-sm text-muted">
-            Доставка автомобилей из США, Европы, Китая и Кореи. Прозрачный трекер,
-            фиксируем условия и сроки.
+            Доставка автомобилей под ключ. Прозрачный трекер, фиксируем условия и сроки.
           </p>
           <div className="text-sm text-muted">
             {withFallback(siteConfig.contacts.address, sitePlaceholders.address)} ·{" "}

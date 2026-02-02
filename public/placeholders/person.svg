@@ -8,5 +8,5 @@
   <rect width="320" height="320" rx="32" fill="url(#g)" stroke="#2b3444"/>
   <circle cx="160" cy="132" r="56" fill="#222b3a"/>
   <rect x="84" y="200" width="152" height="72" rx="36" fill="#222b3a"/>
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#8f9bb0" font-family="Arial" font-size="20" font-weight="600">????</text>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#8f9bb0" font-family="Arial" font-size="20" font-weight="600">PERSON</text>
 </svg>
