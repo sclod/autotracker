@@ -1,23 +1,13 @@
 import Link from "next/link";
 import { siteConfig, sitePlaceholders, withFallback } from "@/config/site";
-import { services } from "@/content/services";
-
-const serviceLinks = services.map((service) => ({
-  href: `/services/${service.slug}`,
-  label: service.title,
-}));
 
 const footerLinks = [
   {
-    title: "РЈСЃР»СѓРіРё",
-    items: serviceLinks,
-  },
-  {
-    title: "РќР°РІРёРіР°С†РёСЏ",
+    title: "Навигация",
     items: [
-      { href: "/", label: "Р“Р»Р°РІРЅР°СЏ" },
-      { href: "/track", label: "РўСЂРµРєРёРЅРі" },
-      { href: "/contact", label: "РљРѕРЅС‚Р°РєС‚С‹" },
+      { href: "/", label: "Главная" },
+      { href: "/track", label: "Трекинг" },
+      { href: "/contact", label: "Контакты" },
     ],
   },
 ];
@@ -25,10 +15,10 @@ const footerLinks = [
 export function SiteFooter() {
   const socialsLabel = (() => {
     const entries = Object.entries(siteConfig.socials).filter(([, value]) => value);
-    if (entries.length === 0) return "РЎРѕС†СЃРµС‚Рё СѓС‚РѕС‡РЅСЏСЋС‚СЃСЏ";
+    if (entries.length === 0) return "Соцсети уточняются";
     return entries
       .map(([key]) => key[0].toUpperCase() + key.slice(1))
-      .join(" В· ");
+      .join(" · ");
   })();
 
   return (
@@ -40,10 +30,10 @@ export function SiteFooter() {
             <span className="text-accent">{siteConfig.brand.accent}</span>
           </div>
           <p className="text-sm text-muted">
-            Р”РѕСЃС‚Р°РІРєР° Р°РІС‚РѕРјРѕР±РёР»РµР№ РїРѕРґ РєР»СЋС‡. РџСЂРѕР·СЂР°С‡РЅС‹Р№ С‚СЂРµРєРµСЂ, С„РёРєСЃРёСЂСѓРµРј СѓСЃР»РѕРІРёСЏ Рё СЃСЂРѕРєРё.
+            Доставка автомобилей под ключ. Прозрачный трекер, фиксируем условия и сроки.
           </p>
           <div className="text-sm text-muted">
-            {withFallback(siteConfig.contacts.address, sitePlaceholders.address)} В·{" "}
+            {withFallback(siteConfig.contacts.address, sitePlaceholders.address)} ·{" "}
             {withFallback(siteConfig.contacts.hours, sitePlaceholders.hours)}
           </div>
         </div>
@@ -62,7 +52,7 @@ export function SiteFooter() {
           </div>
         ))}
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted">РЎРІСЏР·Р°С‚СЊСЃСЏ</div>
+          <div className="text-xs uppercase tracking-[0.2em] text-muted">Связаться</div>
           <div className="text-sm text-muted">
             {withFallback(siteConfig.contacts.phone, sitePlaceholders.phone)}
           </div>
@@ -74,8 +64,8 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border/60">
         <div className="container mx-auto flex flex-col gap-2 px-6 py-6 text-xs text-muted md:flex-row md:items-center md:justify-between">
-          <span>В© 2026 AutoTracker. Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹.</span>
-          <span>РРЅС„РѕСЂРјР°С†РёСЏ РЅР° СЃР°Р№С‚Рµ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РїСѓР±Р»РёС‡РЅРѕР№ РѕС„РµСЂС‚РѕР№.</span>
+          <span>© 2026 AutoTracker. Все права защищены.</span>
+          <span>Информация на сайте не является публичной офертой.</span>
         </div>
       </div>
     </footer>
