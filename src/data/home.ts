@@ -3,31 +3,31 @@ export const managers = [
     name: "Илья Орлов",
     role: "Менеджер по продажам",
     phone: "+7 (900) 555-12-34",
-    image: "/manager1.jpg",
+    image: "/manager1-v2.jpg",
   },
   {
     name: "Тимур Шарипов",
     role: "Менеджер по продажам",
     phone: "+7 (900) 555-23-45",
-    image: "/manager2.jpg",
+    image: "/manager2-v2.jpg",
   },
   {
     name: "Максим Клифов",
     role: "Менеджер по продажам",
     phone: "+7 (900) 555-34-56",
-    image: "/manager3.jpg",
+    image: "/manager3-v2.jpg",
   },
   {
     name: "Роман Харт",
     role: "Менеджер по продажам",
     phone: "+7 (900) 555-45-67",
-    image: "/manager4.jpg",
+    image: "/manager4-v2.jpg",
   },
   {
     name: "Ирина Волкова",
     role: "Менеджер по продажам",
     phone: "+7 (900) 555-56-78",
-    image: "/manager5.jpg",
+    image: "/manager5-v2.jpg",
   },
 ];
 

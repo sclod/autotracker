@@ -1,4 +1,4 @@
-п»їimport type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -16,11 +16,11 @@ import { cn } from "@/lib/utils";
 
 const regionKeys = ["usa", "eu", "china"] as const;
 const teamImages = [
-  "/manager1.jpg",
-  "/manager2.jpg",
-  "/manager3.jpg",
-  "/manager4.jpg",
-  "/manager5.jpg",
+  "/manager1-v2.jpg",
+  "/manager2-v2.jpg",
+  "/manager3-v2.jpg",
+  "/manager4-v2.jpg",
+  "/manager5-v2.jpg",
 ];
 
 export async function generateStaticParams() {
@@ -71,8 +71,8 @@ export default async function ServiceDetailPage({
     : "eu";
   const region = regionsByKey[regionKey];
   const modelsTitle = regionKeys.includes(slug as RegionKey)
-    ? `РџРѕРїСѓР»СЏСЂРЅС‹Рµ РјРѕРґРµР»Рё РёР· ${region.titleGenitive}`
-    : "РџРѕРїСѓР»СЏСЂРЅС‹Рµ РјРѕРґРµР»Рё";
+    ? `Популярные модели из ${region.titleGenitive}`
+    : "Популярные модели";
 
   return (
     <>
@@ -80,15 +80,15 @@ export default async function ServiceDetailPage({
         <div className="container mx-auto space-y-8 px-6 py-12">
           <Breadcrumbs
             items={[
-              { label: "Р“Р»Р°РІРЅР°СЏ", href: "/" },
-              { label: "РЈСЃР»СѓРіРё", href: "/services" },
+              { label: "Главная", href: "/" },
+              { label: "Услуги", href: "/services" },
               { label: service.title },
             ]}
           />
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
             <div className="space-y-5">
               <div className="text-xs uppercase tracking-[0.4em] text-muted">
-                РЈСЃР»СѓРіР°
+                Услуга
               </div>
               <h1 className="text-4xl font-semibold md:text-5xl">
                 {service.hero.title}
@@ -99,13 +99,13 @@ export default async function ServiceDetailPage({
                   href="#lead"
                   className={cn(buttonVariants({ variant: "accent" }))}
                 >
-                  {service.hero.ctaButtonLabel ?? "РџРѕР»СѓС‡РёС‚СЊ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЋ"}
+                  {service.hero.ctaButtonLabel ?? "Получить консультацию"}
                 </Link>
                 <Link
                   href="/services"
                   className={cn(buttonVariants({ variant: "outline" }))}
                 >
-                  Р’СЃРµ СѓСЃР»СѓРіРё
+                  Все услуги
                 </Link>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default async function ServiceDetailPage({
               source={`service-${service.slug}-hero`}
               title={service.hero.ctaTitle}
               description={service.hero.ctaDescription}
-              buttonLabel={service.hero.ctaButtonLabel ?? "РџРѕР»СѓС‡РёС‚СЊ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЋ"}
+              buttonLabel={service.hero.ctaButtonLabel ?? "Получить консультацию"}
               className="bg-card/80"
             />
           </div>
@@ -122,8 +122,8 @@ export default async function ServiceDetailPage({
 
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-[0.4em] text-muted">РџРѕС‡РµРјСѓ РјС‹</div>
-          <h2 className="text-3xl font-semibold">РќР°С€Рё РїСЂРµРёРјСѓС‰РµСЃС‚РІР°</h2>
+          <div className="text-xs uppercase tracking-[0.4em] text-muted">Почему мы</div>
+          <h2 className="text-3xl font-semibold">Наши преимущества</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {service.advantages.map((advantage) => (
@@ -139,8 +139,8 @@ export default async function ServiceDetailPage({
 
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-[0.4em] text-muted">РљР°Рє СЂР°Р±РѕС‚Р°РµРј</div>
-          <h2 className="text-3xl font-semibold">Р­С‚Р°РїС‹ СЂР°Р±РѕС‚С‹</h2>
+          <div className="text-xs uppercase tracking-[0.4em] text-muted">Как работаем</div>
+          <h2 className="text-3xl font-semibold">Этапы работы</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {service.steps.map((step, index) => (
@@ -166,7 +166,7 @@ export default async function ServiceDetailPage({
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
           <div className="text-xs uppercase tracking-[0.4em] text-muted">FAQ</div>
-          <h2 className="text-3xl font-semibold">Р§Р°СЃС‚С‹Рµ РІРѕРїСЂРѕСЃС‹</h2>
+          <h2 className="text-3xl font-semibold">Частые вопросы</h2>
         </div>
         <div className="space-y-4">
           {service.faq.map((item) => (
@@ -185,8 +185,8 @@ export default async function ServiceDetailPage({
 
       <section className="container mx-auto space-y-10 px-6">
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-[0.4em] text-muted">РљРѕРјР°РЅРґР°</div>
-          <h2 className="text-3xl font-semibold">РљРѕРјР°РЅРґР° Рё РєРѕРЅС‚Р°РєС‚С‹</h2>
+          <div className="text-xs uppercase tracking-[0.4em] text-muted">Команда</div>
+          <h2 className="text-3xl font-semibold">Команда и контакты</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {service.team.map((member, index) => (
@@ -223,7 +223,7 @@ export default async function ServiceDetailPage({
       <section className="container mx-auto px-6" id="lead">
         <div className="grid gap-8 rounded-3xl border border-border/60 bg-card-muted p-10 lg:grid-cols-[1.2fr_1fr]">
           <div className="space-y-4">
-            <div className="text-xs uppercase tracking-[0.4em] text-muted">Р—Р°СЏРІРєР°</div>
+            <div className="text-xs uppercase tracking-[0.4em] text-muted">Заявка</div>
             <h2 className="text-3xl font-semibold">{service.cta.title}</h2>
             <p className="text-muted">{service.cta.description}</p>
           </div>
@@ -231,7 +231,7 @@ export default async function ServiceDetailPage({
             source={`service-${service.slug}-cta`}
             title=""
             description=""
-            buttonLabel={service.cta.buttonLabel ?? "РџРѕР»СѓС‡РёС‚СЊ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЋ"}
+            buttonLabel={service.cta.buttonLabel ?? "Получить консультацию"}
             className="bg-transparent border-none p-0"
           />
         </div>
