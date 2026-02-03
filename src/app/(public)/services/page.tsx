@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,14 +16,6 @@ export const metadata: Metadata = {
     description: "Подбор, проверка, логистика и таможенное оформление под ключ.",
     url: `${siteConfig.url}/services`,
     type: "website",
-    images: [
-      {
-        url: "/og/og-cover-v2.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AutoTracker — услуги",
-      },
-    ],
   },
 };
 
@@ -58,3 +50,4 @@ export default function ServicesPage() {
     </>
   );
 }
+

@@ -50,14 +50,6 @@ export async function generateMetadata({
       description: service.seo.description,
       type: "website",
       url: canonical,
-      images: [
-        {
-          url: "/og/og-cover-v2.jpg",
-          width: 1200,
-          height: 630,
-          alt: `AutoTracker — ${service.title}`,
-        },
-      ],
     },
   };
 }

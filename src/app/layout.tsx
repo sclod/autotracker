@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
@@ -26,19 +26,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "AutoTracker",
-    images: [
-      {
-        url: "/og/og-cover-v2.jpg",
-        width: 1200,
-        height: 630,
-        type: "image/jpeg",
-        alt: "AutoTracker",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: ["/og/og-cover-v2.jpg"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -58,3 +45,4 @@ export default function RootLayout({
     </html>
   );
 }
+

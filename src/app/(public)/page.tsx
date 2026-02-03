@@ -24,22 +24,14 @@ export const metadata: Metadata = {
       "Подбор, проверка и доставка автомобилей под ключ. Прозрачные этапы, трекинг заказа, сопровождение на каждом шаге.",
     url: siteConfig.url,
     type: "website",
-    images: [
-      {
-        url: "/og/og-cover-v2.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AutoTracker — импорт автомобилей",
-      },
-    ],
   },
 };
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative isolate h-auto overflow-hidden md:min-h-screen -mt-[var(--header-h)]">
-        <div className="relative overflow-hidden lg:pb-[100px]">
+      <section className="relative isolate h-auto -mt-[var(--header-h)] min-h-[560px] md:min-h-[720px] lg:min-h-[780px]">
+        <div className="relative pb-10 md:pb-12">
           <div className="pointer-events-none absolute inset-0 z-0">
             <HeroVideo />
             <div className="absolute inset-0 bg-gradient-to-r from-[#07090d] via-[#07090d]/80 to-transparent" />
@@ -109,7 +101,7 @@ export default function HomePage() {
 
 </section>
 
-      <section className="container mx-auto px-6 md:-mt-[100px]">
+      <section className="container mx-auto px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="space-y-2">
             <div className="text-xs uppercase tracking-[0.4em] text-muted">Команда</div>

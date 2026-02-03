@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,14 +18,6 @@ export const metadata: Metadata = {
       "Портал отслеживания заказа: этапы, карта маршрута, чат и файлы.",
     url: `${siteConfig.url}/track`,
     type: "website",
-    images: [
-      {
-        url: "/og/og-cover-v2.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AutoTracker — трекинг заказа",
-      },
-    ],
   },
 };
 
@@ -43,8 +35,8 @@ export default async function TrackPage({
     : "[A-Za-z0-9]{10,12}";
   const placeholder = `Например, ${example}`;
   const inputTitle = demoAllowed
-    ? "Номер заказа: 6 цифр (демо) или 10-12 символов A-Z/0-9"
-    : "Номер заказа: 10-12 символов A-Z/0-9";
+    ? "Номер заказа: 6 цифр (демо) или 10–12 символов A-Z/0-9"
+    : "Номер заказа: 10–12 символов A-Z/0-9";
 
   if (trackingNumber) {
     redirect(`/track/${encodeURIComponent(trackingNumber)}`);
@@ -164,3 +156,4 @@ export default async function TrackPage({
     </>
   );
 }
+
