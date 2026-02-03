@@ -35,11 +35,15 @@ export function CatalogRegionShowcase({
   const leadRef = useRef<HTMLDivElement>(null);
 
   const handlePick = (car: Car) => {
-    setMessage(
-      regionLabel
-        ? `Хочу ${car.name} из ${regionLabel}, свяжитесь со мной`
-        : `Хочу ${car.name}, свяжитесь со мной`
-    );
+    const nextMessage = regionLabel
+      ? `Хочу ${car.name} из ${regionLabel}, свяжитесь со мной`
+      : `Хочу ${car.name}, свяжитесь со мной`;
+    setMessage(nextMessage);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("lead:prefill", { detail: { message: nextMessage } })
+      );
+    }
     requestAnimationFrame(() => {
       leadRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });

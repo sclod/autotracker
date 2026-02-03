@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState } from "react";
 import { LeadForm } from "@/components/lead-form";
@@ -25,7 +25,13 @@ export function PopularModelsSection({
   const leadRef = useRef<HTMLDivElement>(null);
 
   const handlePick = (car: Car) => {
-    setMessage(`Хочу ${car.name}, свяжитесь со мной`);
+    const nextMessage = `Хочу ${car.name}, свяжитесь со мной`;
+    setMessage(nextMessage);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("lead:prefill", { detail: { message: nextMessage } })
+      );
+    }
     requestAnimationFrame(() => {
       leadRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -38,9 +44,7 @@ export function PopularModelsSection({
           <div className="text-xs uppercase tracking-[0.4em] text-muted">
             Популярные модели
           </div>
-          <Heading className="text-3xl font-semibold md:text-4xl">
-            {title}
-          </Heading>
+          <Heading className="text-3xl font-semibold md:text-4xl">{title}</Heading>
           {subtitle && <p className="text-sm text-muted">{subtitle}</p>}
         </div>
 

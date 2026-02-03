@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Image from "next/image";
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { createLeadAction } from "@/app/actions/leads";
 import { leadInitialState } from "@/lib/lead-state";
@@ -66,6 +66,24 @@ export function LeadForm({
   const inputClassName = isCompact ? "h-10" : undefined;
   const textareaClassName = isCompact ? "min-h-[80px]" : undefined;
   const buttonClassName = isCompact ? "h-10 text-xs" : undefined;
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (defaultValues?.message && messageRef.current) {
+      messageRef.current.value = defaultValues.message;
+    }
+  }, [defaultValues?.message]);
+
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const detail = (event as CustomEvent<{ message?: string }>).detail;
+      if (detail?.message && messageRef.current) {
+        messageRef.current.value = detail.message;
+      }
+    };
+    window.addEventListener("lead:prefill", handler as EventListener);
+    return () => window.removeEventListener("lead:prefill", handler as EventListener);
+  }, []);
 
   return (
     <div
@@ -128,6 +146,7 @@ export function LeadForm({
               className={inputClassName}
             />
             <Textarea
+              ref={messageRef}
               name="message"
               placeholder="Сообщение"
               maxLength={1000}
