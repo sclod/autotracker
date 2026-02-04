@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo } from "react";
 import {
@@ -10,6 +10,7 @@ import {
   useMap,
 } from "react-leaflet";
 import L from "leaflet";
+import type { Map as LeafletMap } from "leaflet";
 
 export type RoutePoint = {
   id: string;
@@ -21,7 +22,7 @@ export type RoutePoint = {
 };
 
 function FitBounds({ points }: { points: RoutePoint[] }) {
-  const map = useMap();
+  const map = useMap() as LeafletMap;
 
   useEffect(() => {
     if (points.length < 2) return;
@@ -39,7 +40,7 @@ function FocusPoint({
   points: RoutePoint[];
   focusPointId?: string | null;
 }) {
-  const map = useMap();
+  const map = useMap() as LeafletMap;
 
   useEffect(() => {
     if (!focusPointId) return;
