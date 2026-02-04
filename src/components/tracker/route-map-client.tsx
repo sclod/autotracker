@@ -10,7 +10,6 @@ import {
   useMap,
 } from "react-leaflet";
 import L from "leaflet";
-import type { Map as LeafletMap } from "leaflet";
 
 export type RoutePoint = {
   id: string;
@@ -21,8 +20,13 @@ export type RoutePoint = {
   timestamp?: string;
 };
 
+type LeafletLikeMap = {
+  fitBounds: (...args: unknown[]) => void;
+  flyTo: (...args: unknown[]) => void;
+};
+
 function FitBounds({ points }: { points: RoutePoint[] }) {
-  const map = useMap() as LeafletMap;
+  const map = useMap() as LeafletLikeMap;
 
   useEffect(() => {
     if (points.length < 2) return;
@@ -40,7 +44,7 @@ function FocusPoint({
   points: RoutePoint[];
   focusPointId?: string | null;
 }) {
-  const map = useMap() as LeafletMap;
+  const map = useMap() as LeafletLikeMap;
 
   useEffect(() => {
     if (!focusPointId) return;
