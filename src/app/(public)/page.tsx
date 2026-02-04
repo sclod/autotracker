@@ -51,13 +51,26 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="max-md:hidden">
-                <LeadForm
-                  source="hero"
-                  title="Оставьте заявку"
-                  description="Подберём авто и рассчитаем стоимость под ваш бюджет."
-                  buttonLabel="Отправить заявку"
-                  className="backdrop-blur"
-                />
+                <div className="rounded-3xl border border-border/60 bg-card/80 p-6 backdrop-blur">
+                  <div className="flex flex-col gap-6">
+                    <div>
+                      <div className="text-lg font-semibold">Оставьте заявку</div>
+                      <p className="mt-2 text-sm text-muted">
+                        Подберём авто и рассчитаем стоимость под ваш бюджет.
+                      </p>
+                    </div>
+                    <Link
+                      href="#lead-form"
+                      className={cn(
+                        buttonVariants({ variant: "accent", size: "lg" }),
+                        "w-full"
+                      )}
+                    >
+                      Оставить заявку
+                    </Link>
+                    <div className="text-xs text-muted">Ответим в течение 10–15 минут</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -75,18 +88,32 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div className="relative z-10 container mx-auto px-6 md:hidden">
-            <div className="space-y-6 pb-6">
-              <LeadForm
-                source="hero-mobile"
-                title="Оставьте заявку"
-                description="Подберём авто и рассчитаем стоимость под ваш бюджет."
-                buttonLabel="Отправить заявку"
-              />
-              <div className="grid gap-4">
-                {stats.map((stat) => (
-                  <Card key={stat.label} className="bg-card/70">
-                    <CardHeader>
+        <div className="relative z-10 container mx-auto px-6 md:hidden">
+          <div className="space-y-6 pb-6">
+            <div className="rounded-3xl border border-border/60 bg-card/80 p-6">
+              <div className="flex flex-col gap-6">
+                <div>
+                  <div className="text-lg font-semibold">Оставьте заявку</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Подберём авто и рассчитаем стоимость под ваш бюджет.
+                  </p>
+                </div>
+                <Link
+                  href="#lead-form"
+                  className={cn(
+                    buttonVariants({ variant: "accent", size: "lg" }),
+                    "w-full"
+                  )}
+                >
+                  Оставить заявку
+                </Link>
+                <div className="text-xs text-muted">Ответим в течение 10–15 минут</div>
+              </div>
+            </div>
+            <div className="grid gap-4">
+              {stats.map((stat) => (
+                <Card key={stat.label} className="bg-card/70">
+                  <CardHeader>
                       <CardTitle className="text-3xl text-foreground">
                         {stat.value}
                       </CardTitle>
@@ -101,7 +128,7 @@ export default function HomePage() {
 
 </section>
 
-      <section className="container mx-auto px-6">
+      <section className="container mx-auto px-6" id="lead-form">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="space-y-2">
             <div className="text-xs uppercase tracking-[0.4em] text-muted">Команда</div>
