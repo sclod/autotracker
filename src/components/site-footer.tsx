@@ -1,3 +1,4 @@
+﻿import Image from "next/image";
 import Link from "next/link";
 import { siteConfig, sitePlaceholders, withFallback } from "@/config/site";
 
@@ -13,13 +14,7 @@ const footerLinks = [
 ];
 
 export function SiteFooter() {
-  const socialsLabel = (() => {
-    const entries = Object.entries(siteConfig.socials).filter(([, value]) => value);
-    if (entries.length === 0) return "Соцсети уточняются";
-    return entries
-      .map(([key]) => key[0].toUpperCase() + key.slice(1))
-      .join(" · ");
-  })();
+  const telegramLink = siteConfig.socials.telegram;
 
   return (
     <footer className="border-t border-border/60 bg-card-muted">
@@ -39,9 +34,7 @@ export function SiteFooter() {
         </div>
         {footerLinks.map((section) => (
           <div key={section.title} className="space-y-3">
-            <div className="text-xs uppercase tracking-[0.2em] text-muted">
-              {section.title}
-            </div>
+            <div className="text-xs uppercase tracking-[0.2em] text-muted">{section.title}</div>
             <div className="flex flex-col gap-2 text-sm">
               {section.items.map((item) => (
                 <Link key={item.label} href={item.href} className="hover:text-foreground">
@@ -59,7 +52,17 @@ export function SiteFooter() {
           <div className="text-sm text-muted">
             {withFallback(siteConfig.contacts.email, sitePlaceholders.email)}
           </div>
-          <div className="text-sm text-muted">{socialsLabel}</div>
+          {telegramLink ? (
+            <a
+              href={telegramLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-3 py-2 text-sm text-foreground transition hover:border-accent hover:bg-card"
+            >
+              <Image src="/telegram.png" alt="Telegram" width={16} height={16} />
+              <span>Наш Telegram</span>
+            </a>
+          ) : null}
         </div>
       </div>
       <div className="border-t border-border/60">
@@ -70,4 +73,4 @@ export function SiteFooter() {
       </div>
     </footer>
   );
-}
+}

@@ -1,4 +1,4 @@
-export const siteConfig = {
+﻿export const siteConfig = {
   brand: {
     name: "AUTO",
     accent: "TRACKER",
@@ -9,10 +9,10 @@ export const siteConfig = {
     phone: "+7 (900) 555-12-34",
     email: "hello@autotracker.ru",
     address: "Москва, Пресненская наб., 12",
-    hours: "Ежедневно 10:00–20:00",
+    hours: "Ежедневно 10:00-20:00",
   },
   socials: {
-    telegram: "https://t.me/autotracker",
+    telegram: "https://t.me/importauto_ru",
     whatsapp: "https://wa.me/79005551234",
     vk: "https://vk.com/autotracker",
   },

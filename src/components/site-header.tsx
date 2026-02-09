@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
@@ -13,6 +14,7 @@ const navItems = [
 
 export function SiteHeader({ className }: { className?: string }) {
   const phone = withFallback(siteConfig.contacts.phone, sitePlaceholders.phone);
+  const telegramLink = siteConfig.socials.telegram;
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const lastY = useRef(0);
@@ -60,6 +62,17 @@ export function SiteHeader({ className }: { className?: string }) {
             >
               {phone}
             </Link>
+            {telegramLink ? (
+              <a
+                href={telegramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Telegram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-card/60 transition hover:border-accent hover:bg-card"
+              >
+                <Image src="/telegram.png" alt="Telegram" width={18} height={18} />
+              </a>
+            ) : null}
             <button
               type="button"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/60 text-foreground transition hover:bg-card md:hidden"
@@ -87,10 +100,7 @@ export function SiteHeader({ className }: { className?: string }) {
           ))}
         </nav>
         <div className="hidden flex-wrap items-center gap-3 md:flex">
-          <Link
-            href="/contact"
-            className={cn(buttonVariants({ variant: "accent" }))}
-          >
+          <Link href="/contact" className={cn(buttonVariants({ variant: "accent" }))}>
             Получить подбор
           </Link>
         </div>
@@ -111,6 +121,17 @@ export function SiteHeader({ className }: { className?: string }) {
                     {item.label}
                   </Link>
                 ))}
+                {telegramLink ? (
+                  <a
+                    href={telegramLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-foreground hover:bg-white/10"
+                  >
+                    <Image src="/telegram.png" alt="Telegram" width={16} height={16} />
+                    Telegram канал
+                  </a>
+                ) : null}
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
