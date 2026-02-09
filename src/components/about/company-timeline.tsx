@@ -17,7 +17,7 @@ export function CompanyTimeline() {
               <div key={item.year} className="flex-1">
                 <div className="flex items-center gap-3">
                   <span className="h-3 w-3 rounded-full bg-accent shadow-[0_0_20px_rgba(255,230,0,0.45)]" />
-                  <div className="text-2xl font-semibold text-foreground">
+                  <div className="translate-y-[10px] text-2xl font-semibold text-foreground">
                     {item.year}
                   </div>
                 </div>
@@ -38,7 +38,9 @@ export function CompanyTimeline() {
             {index < companyContent.timeline.length - 1 && (
               <span className="absolute left-[5px] top-5 h-full w-px bg-border/70" />
             )}
-            <div className={cn("text-xl font-semibold text-foreground")}>{item.year}</div>
+            <div className={cn("translate-y-[10px] text-xl font-semibold text-foreground")}>
+              {item.year}
+            </div>
             <div className="mt-2 text-sm font-semibold text-foreground">{item.title}</div>
             <p className="mt-2 text-sm text-muted">{item.desc}</p>
           </div>

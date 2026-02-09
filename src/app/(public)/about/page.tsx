@@ -2,7 +2,6 @@
 import { PageHero } from "@/components/page-hero";
 import { CompanyStats } from "@/components/about/company-stats";
 import { CompanyTimeline } from "@/components/about/company-timeline";
-import { CompanyCulture } from "@/components/about/company-culture";
 
 export const metadata: Metadata = {
   title: "О компании",
@@ -19,7 +18,6 @@ export default function AboutPage() {
       />
       <CompanyStats />
       <CompanyTimeline />
-      <CompanyCulture />
     </div>
   );
 }
