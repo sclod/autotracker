@@ -159,9 +159,6 @@ export default function HomePage() {
                     {manager.role}
                   </div>
                 </div>
-                <div className="text-sm text-muted text-center">
-                  {manager.phone}
-                </div>
               </CardContent>
             </Card>
           ))}

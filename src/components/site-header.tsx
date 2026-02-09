@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { siteConfig, sitePlaceholders, withFallback } from "@/config/site";
 
 const navItems = [
-  { href: "/services", label: "Услуги" },
   { href: "/contact", label: "Контакты" },
   { href: "/track", label: "Трекер" },
 ];
