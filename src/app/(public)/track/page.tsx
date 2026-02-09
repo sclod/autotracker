@@ -91,9 +91,6 @@ export default async function TrackPage({
                 <p className="mt-2">
                   Номер указан в договоре или в сообщении менеджера. Если не нашли — напишите нам.
                 </p>
-                <div className="mt-3 text-xs text-muted">
-                  Пример номера: <span className="font-semibold text-foreground">{example}</span>
-                </div>
               </div>
 
               {(error === "not_found" || error === "invalid") && (

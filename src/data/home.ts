@@ -1,5 +1,10 @@
 ﻿export const managers = [
   {
+    name: "Андрей",
+    role: "Главный менеджер по продажам",
+    image: "/manager6.jpg",
+  },
+  {
     name: "Илья",
     role: "Менеджер по продажам",
     image: "/manager1-v2.jpg",
@@ -23,11 +28,6 @@
     name: "Ирина",
     role: "Менеджер по продажам",
     image: "/manager5-v2.jpg",
-  },
-  {
-    name: "Андрей",
-    role: "Руководитель отдела",
-    image: "/manager6.jpg",
   },
 ];
 
