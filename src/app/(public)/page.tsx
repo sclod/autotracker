@@ -38,7 +38,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="relative z-10 container mx-auto px-6 pt-[var(--header-h)] pb-0 md:pt-24 md:pb-24">
-            <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+            <div className="grid gap-10">
               <div className="max-w-3xl space-y-6">
                 <div className="text-xs uppercase tracking-[0.4em] text-muted">Импорт авто под ключ</div>
                 <h1 className="text-4xl font-semibold leading-tight md:text-6xl">Привезём автомобиль под ваш бюджет и сроки</h1>
@@ -48,28 +48,6 @@ export default function HomePage() {
                     href="/contact"
                     className={cn(buttonVariants({ variant: "accent", size: "lg" }))}
                   >Получить консультацию</Link>
-                </div>
-              </div>
-              <div className="max-md:hidden">
-                <div className="rounded-3xl border border-border/60 bg-card/80 p-6 backdrop-blur">
-                  <div className="flex flex-col gap-6">
-                    <div>
-                      <div className="text-lg font-semibold">Оставьте заявку</div>
-                      <p className="mt-2 text-sm text-muted">
-                        Подберём авто и рассчитаем стоимость под ваш бюджет.
-                      </p>
-                    </div>
-                    <Link
-                      href="#lead-form"
-                      className={cn(
-                        buttonVariants({ variant: "accent", size: "lg" }),
-                        "w-full"
-                      )}
-                    >
-                      Оставить заявку
-                    </Link>
-                    <div className="text-xs text-muted">Ответим в течение 10–15 минут</div>
-                  </div>
                 </div>
               </div>
             </div>

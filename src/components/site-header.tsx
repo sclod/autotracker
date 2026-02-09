@@ -10,6 +10,7 @@ import { siteConfig, sitePlaceholders, withFallback } from "@/config/site";
 const navItems = [
   { href: "/contact", label: "Контакты" },
   { href: "/track", label: "Трекер" },
+  { href: "/about", label: "О компании" },
 ];
 
 export function SiteHeader({ className }: { className?: string }) {
@@ -99,11 +100,6 @@ export function SiteHeader({ className }: { className?: string }) {
             </Link>
           ))}
         </nav>
-        <div className="hidden flex-wrap items-center gap-3 md:flex">
-          <Link href="/contact" className={cn(buttonVariants({ variant: "accent" }))}>
-            Получить подбор
-          </Link>
-        </div>
       </div>
 
       {open && (
@@ -132,13 +128,6 @@ export function SiteHeader({ className }: { className?: string }) {
                     Telegram канал
                   </a>
                 ) : null}
-                <Link
-                  href="/contact"
-                  onClick={() => setOpen(false)}
-                  className={cn(buttonVariants({ variant: "accent" }), "w-full")}
-                >
-                  Получить подбор
-                </Link>
                 <div className="text-xs text-muted">{phone}</div>
               </div>
             </div>

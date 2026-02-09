@@ -8,7 +8,7 @@
   contacts: {
     phone: "+7 (900) 555-12-34",
     email: "hello@autotracker.ru",
-    address: "Москва, Пресненская наб., 12",
+    address: "Москва",
     hours: "Ежедневно 10:00-20:00",
   },
   socials: {
