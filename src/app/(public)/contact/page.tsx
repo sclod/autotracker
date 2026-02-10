@@ -1,4 +1,5 @@
-﻿import { PageHero } from "@/components/page-hero";
+﻿import Image from "next/image";
+import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { siteConfig, sitePlaceholders, withFallback } from "@/config/site";
 
 export default function ContactPage() {
+  const telegramLink = siteConfig.socials.telegram;
   return (
     <>
       <PageHero
@@ -42,19 +44,21 @@ export default function ContactPage() {
           </div>
           <div className="rounded-3xl border border-border/60 bg-card/80 p-6">
             <div className="text-xs uppercase tracking-[0.3em] text-muted">Связаться</div>
-            <div className="mt-3 text-sm text-muted">
-              {withFallback(siteConfig.contacts.phone, sitePlaceholders.phone)}
-            </div>
-            <div className="text-sm text-muted">
-              {withFallback(siteConfig.contacts.email, sitePlaceholders.email)}
-            </div>
-            <div className="text-sm text-muted">
-              {Object.values(siteConfig.socials).some(Boolean)
-                ? Object.entries(siteConfig.socials)
-                    .filter(([, value]) => value)
-                    .map(([key]) => key[0].toUpperCase() + key.slice(1))
-                    .join(" · ")
-                : "Соцсети уточняются"}
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <div className="text-sm text-muted">
+                {withFallback(siteConfig.contacts.email, sitePlaceholders.email)}
+              </div>
+              {telegramLink ? (
+                <a
+                  href={telegramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-3 py-2 text-sm text-foreground transition hover:border-accent hover:bg-card"
+                >
+                  <Image src="/telegram.png" alt="Telegram" width={16} height={16} />
+                  <span>Наш Telegram</span>
+                </a>
+              ) : null}
             </div>
           </div>
         </div>

@@ -3,9 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { siteConfig, sitePlaceholders, withFallback } from "@/config/site";
+import { siteConfig } from "@/config/site";
 
 const navItems = [
   { href: "/contact", label: "Контакты" },
@@ -14,7 +13,6 @@ const navItems = [
 ];
 
 export function SiteHeader({ className }: { className?: string }) {
-  const phone = withFallback(siteConfig.contacts.phone, sitePlaceholders.phone);
   const telegramLink = siteConfig.socials.telegram;
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
@@ -54,15 +52,6 @@ export function SiteHeader({ className }: { className?: string }) {
             <span className="text-accent">{siteConfig.brand.accent}</span>
           </Link>
           <div className="flex items-center gap-2">
-            <Link
-              href="/contact"
-              className={cn(
-                buttonVariants({ variant: "subtle", size: "sm" }),
-                "hidden sm:inline-flex"
-              )}
-            >
-              {phone}
-            </Link>
             {telegramLink ? (
               <a
                 href={telegramLink}
@@ -128,7 +117,6 @@ export function SiteHeader({ className }: { className?: string }) {
                     Telegram канал
                   </a>
                 ) : null}
-                <div className="text-xs text-muted">{phone}</div>
               </div>
             </div>
           </div>

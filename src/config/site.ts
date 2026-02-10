@@ -1,7 +1,7 @@
 ﻿export const siteConfig = {
   brand: {
-    name: "AUTO",
-    accent: "TRACKER",
+    name: "EURO",
+    accent: "IMPORT",
   },
   tagline: "Импорт автомобилей под ключ по России",
   locationShort: "Москва · работаем по РФ",
