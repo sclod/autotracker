@@ -46,12 +46,6 @@ export function SiteFooter() {
         ))}
         <div className="space-y-3">
           <div className="text-xs uppercase tracking-[0.2em] text-muted">Связаться</div>
-          <div className="text-sm text-muted">
-            {withFallback(siteConfig.contacts.phone, sitePlaceholders.phone)}
-          </div>
-          <div className="text-sm text-muted">
-            {withFallback(siteConfig.contacts.email, sitePlaceholders.email)}
-          </div>
           {telegramLink ? (
             <a
               href={telegramLink}
